@@ -20,8 +20,8 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* LexikonAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexikonAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* LexikonAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexikonAppDelegate.m; sourceTree = "<group>"; };
+		1D3623240D0F684500981E51 /* LexikonAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LexikonAppDelegate.h; path = Classes/LexikonAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* LexikonAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LexikonAppDelegate.m; path = Classes/LexikonAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Lexikon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexikon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -29,8 +29,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Lexikon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexikon_Prefix.pch; sourceTree = "<group>"; };
 		3CE4FB360EB9FBCD0088EBD7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		3CE4FB5A0EB9FD910088EBD7 /* fmdb */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fmdb; sourceTree = "<group>"; };
-		3CE4FB5C0EB9FD9A0088EBD7 /* fmdb-migration-manager */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "fmdb-migration-manager"; sourceTree = "<group>"; };
+		3CE4FB5A0EB9FD910088EBD7 /* fmdb */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fmdb; path = Classes/fmdb; sourceTree = "<group>"; };
+		3CE4FB5C0EB9FD9A0088EBD7 /* fmdb-migration-manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "fmdb-migration-manager"; path = "Classes/fmdb-migration-manager"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,14 +49,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				3CE4FB5C0EB9FD9A0088EBD7 /* fmdb-migration-manager */,
-				3CE4FB5A0EB9FD910088EBD7 /* fmdb */,
-				1D3623240D0F684500981E51 /* LexikonAppDelegate.h */,
-				1D3623250D0F684500981E51 /* LexikonAppDelegate.m */,
 			);
+			name = "User Interface";
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -71,7 +68,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
+				3CE4FBC90EB9FED10088EBD7 /* Classes */,
+				080E96DDFE201D6D7F000001 /* User Interface */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -107,6 +105,17 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CE4FBC90EB9FED10088EBD7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3CE4FB5C0EB9FD9A0088EBD7 /* fmdb-migration-manager */,
+				3CE4FB5A0EB9FD910088EBD7 /* fmdb */,
+				1D3623240D0F684500981E51 /* LexikonAppDelegate.h */,
+				1D3623250D0F684500981E51 /* LexikonAppDelegate.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
