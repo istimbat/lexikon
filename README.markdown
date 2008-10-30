@@ -1,4 +1,4 @@
-## Lexikon
+# Lexikon
 
 An iPhone application to query and cache results from the online Lexin Swedish-English dictionary.
 
