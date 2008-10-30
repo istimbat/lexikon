@@ -10,7 +10,7 @@ Currently in the beginning stages of development
 
 ## Code Contributions
 
-Lexikon is using [Gus Mueller](http://gusmueller.com/)'s [FMDB](http://gusmueller.com/blog/archives/2008/06/new_home_for_fmdb.html) adapter for managing talking with the SQLite database. In addition (Dr Nic Williams)(http://drnicwilliams.com)' (FMDB Migration Manager)[http://github.com/mocra/fmdb-migration-manager/].
+Lexikon is using [Gus Mueller](http://gusmueller.com/)'s [FMDB](http://gusmueller.com/blog/archives/2008/06/new_home_for_fmdb.html) adapter for managing talking with the SQLite database. In addition (Dr Nic Williams)(http://drnicwilliams.com)' [FMDB Migration Manager](http://github.com/mocra/fmdb-migration-manager/).
 
 ## License
 
