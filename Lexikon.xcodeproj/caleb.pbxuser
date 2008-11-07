@@ -2,9 +2,16 @@
 {
 	1D3623240D0F684500981E51 /* LexikonAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {768, 547}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 327}";
+			sepNavIntBoundsRect = "{{0, 0}, {768, 537}}";
+			sepNavSelRange = "{612, 0}";
+			sepNavVisRange = "{0, 621}";
+		};
+	};
+	1D3623250D0F684500981E51 /* LexikonAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {768, 537}}";
+			sepNavSelRange = "{396, 0}";
+			sepNavVisRange = "{0, 516}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* Lexikon */ = {
@@ -14,8 +21,9 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = 3CE4FB0D0EB9FB0F0088EBD7 /* Lexikon */;
+		activeSDKPreference = iphoneos2.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Lexikon */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Lexikon */,
@@ -32,7 +40,7 @@
 					20,
 					590,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -47,16 +55,132 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 247069455;
-			PBXWorkspaceStateSaveDate = 247069455;
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					550,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 247758907;
+			PBXWorkspaceStateSaveDate = 247758907;
 		};
 		perUserProjectItems = {
-			3CE4FBCA0EB9FF180088EBD7 /* PBXTextBookmark */ = 3CE4FBCA0EB9FF180088EBD7 /* PBXTextBookmark */;
-			3CE4FBCB0EB9FF180088EBD7 /* PBXTextBookmark */ = 3CE4FBCB0EB9FF180088EBD7 /* PBXTextBookmark */;
+			3C087C2F0EC4803F0057FF2A /* PBXTextBookmark */ = 3C087C2F0EC4803F0057FF2A /* PBXTextBookmark */;
+			3C1E4C340EBDD37D007BA89F = 3C1E4C340EBDD37D007BA89F /* PBXTextBookmark */;
+			3C5615D60EBB3A75008FB33F = 3C5615D60EBB3A75008FB33F /* PBXTextBookmark */;
+			3C5615E30EBB3BB5008FB33F = 3C5615E30EBB3BB5008FB33F /* PBXTextBookmark */;
+			3C5615E40EBB3BB5008FB33F = 3C5615E40EBB3BB5008FB33F /* PBXTextBookmark */;
+			3C5615E60EBB3BB5008FB33F = 3C5615E60EBB3BB5008FB33F /* PBXTextBookmark */;
+			3CA7D3CE0EBDCEF200565EC2 = 3CA7D3CE0EBDCEF200565EC2 /* PBXTextBookmark */;
+			3CE4FBD00EBB21220088EBD7 = 3CE4FBD00EBB21220088EBD7 /* PBXTextBookmark */;
+			3CE4FBD20EBB21220088EBD7 = 3CE4FBD20EBB21220088EBD7 /* PBXTextBookmark */;
+			3CE4FBD50EBB21220088EBD7 = 3CE4FBD50EBB21220088EBD7 /* PBXTextBookmark */;
+			3CE4FBD60EBB21220088EBD7 = 3CE4FBD60EBB21220088EBD7 /* PBXTextBookmark */;
+			3CE4FBD80EBB21220088EBD7 = 3CE4FBD80EBB21220088EBD7 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3CE4FB110EB9FB310088EBD7 /* Source Control */;
 		userBuildSettings = {
 		};
+	};
+	3C087C2F0EC4803F0057FF2A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* LexikonAppDelegate.m */;
+		name = "LexikonAppDelegate.m: 22";
+		rLen = 0;
+		rLoc = 396;
+		rType = 0;
+		vrLen = 516;
+		vrLoc = 0;
+	};
+	3C1E4C340EBDD37D007BA89F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* LexikonAppDelegate.m */;
+		name = "LexikonAppDelegate.m: 22";
+		rLen = 0;
+		rLoc = 396;
+		rType = 0;
+		vrLen = 516;
+		vrLoc = 0;
+	};
+	3C5615C10EBB39E8008FB33F /* MainViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 216}}";
+			sepNavSelRange = "{110, 0}";
+			sepNavVisRange = "{0, 155}";
+		};
+	};
+	3C5615C20EBB39E8008FB33F /* MainViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 186}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 73}";
+		};
+	};
+	3C5615D60EBB3A75008FB33F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* LexikonAppDelegate.m */;
+		name = "LexikonAppDelegate.m: 8";
+		rLen = 0;
+		rLoc = 131;
+		rType = 0;
+		vrLen = 467;
+		vrLoc = 0;
+	};
+	3C5615E30EBB3BB5008FB33F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C5615C10EBB39E8008FB33F /* MainViewController.h */;
+		name = "MainViewController.h: 5";
+		rLen = 0;
+		rLoc = 110;
+		rType = 0;
+		vrLen = 155;
+		vrLoc = 0;
+	};
+	3C5615E40EBB3BB5008FB33F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* LexikonAppDelegate.h */;
+		name = "LexikonAppDelegate.h: 24";
+		rLen = 0;
+		rLoc = 612;
+		rType = 0;
+		vrLen = 621;
+		vrLoc = 0;
+	};
+	3C5615E60EBB3BB5008FB33F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C5615C10EBB39E8008FB33F /* MainViewController.h */;
+		name = "MainViewController.h: 5";
+		rLen = 0;
+		rLoc = 110;
+		rType = 0;
+		vrLen = 155;
+		vrLoc = 0;
+	};
+	3CA7D3CE0EBDCEF200565EC2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* LexikonAppDelegate.m */;
+		name = "LexikonAppDelegate.m: 22";
+		rLen = 0;
+		rLoc = 396;
+		rType = 0;
+		vrLen = 516;
+		vrLoc = 0;
 	};
 	3CE4FB0D0EB9FB0F0088EBD7 /* Lexikon */ = {
 		isa = PBXExecutable;
@@ -65,12 +189,13 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -78,6 +203,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = Lexikon;
+		savedGlobals = {
+		};
 		sourceDirectories = (
 		);
 	};
@@ -92,7 +219,41 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	3CE4FBCA0EB9FF180088EBD7 /* PBXTextBookmark */ = {
+	3CE4FBD00EBB21220088EBD7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3CE4FBD10EBB21220088EBD7 /* FMResultSet.m */;
+		name = "FMResultSet.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1004;
+		vrLoc = 0;
+	};
+	3CE4FBD10EBB21220088EBD7 /* FMResultSet.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FMResultSet.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/Classes/fmdb/FMResultSet.m;
+		sourceTree = "<absolute>";
+	};
+	3CE4FBD20EBB21220088EBD7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3CE4FBD30EBB21220088EBD7 /* LICENSE.txt */;
+		name = "LICENSE.txt: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1199;
+		vrLoc = 0;
+	};
+	3CE4FBD30EBB21220088EBD7 /* LICENSE.txt */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = LICENSE.txt;
+		path = /Users/caleb/src/Lexikon/Lexikon/Classes/fmdb/LICENSE.txt;
+		sourceTree = "<absolute>";
+	};
+	3CE4FBD50EBB21220088EBD7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1D3623240D0F684500981E51 /* LexikonAppDelegate.h */;
 		name = "LexikonAppDelegate.h: 1";
@@ -102,14 +263,38 @@
 		vrLen = 327;
 		vrLoc = 0;
 	};
-	3CE4FBCB0EB9FF180088EBD7 /* PBXTextBookmark */ = {
+	3CE4FBD60EBB21220088EBD7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 1D3623240D0F684500981E51 /* LexikonAppDelegate.h */;
-		name = "LexikonAppDelegate.h: 1";
+		fRef = 3CE4FBD70EBB21220088EBD7 /* FMResultSet.m */;
+		name = "FMResultSet.m: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 327;
+		vrLen = 1004;
 		vrLoc = 0;
+	};
+	3CE4FBD70EBB21220088EBD7 /* FMResultSet.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FMResultSet.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/Classes/fmdb/FMResultSet.m;
+		sourceTree = "<absolute>";
+	};
+	3CE4FBD80EBB21220088EBD7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3CE4FBD90EBB21220088EBD7 /* LICENSE.txt */;
+		name = "LICENSE.txt: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1199;
+		vrLoc = 0;
+	};
+	3CE4FBD90EBB21220088EBD7 /* LICENSE.txt */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = LICENSE.txt;
+		path = /Users/caleb/src/Lexikon/Lexikon/Classes/fmdb/LICENSE.txt;
+		sourceTree = "<absolute>";
 	};
 }

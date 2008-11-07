@@ -3,7 +3,7 @@
 //  Lexikon
 //
 //  Created by Caleb Jaffa on 10/30/08.
-//  Copyright __MyCompanyName__ 2008. All rights reserved.
+//  Copyright 2008 Caleb Jaffa, MIT licensed
 //
 
 #import "LexikonAppDelegate.h"
@@ -21,8 +21,10 @@
 
 
 - (void)dealloc {
-    [window release];
-    [super dealloc];
+  [window release];
+  [navigationController release];
+  [words release];
+  [super dealloc];
 }
 
 
