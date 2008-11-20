@@ -20,28 +20,25 @@
   
   // make it so the index is always displayed
   tableView.sectionIndexMinimumDisplayRowCount = 1;
-  
-  // TODO: figure out how to exclude the searchBar and About cell from being editted
-  self.navigationItem.rightBarButtonItem = self.editButtonItem;
-  
+
   [self changeIndexLetters: appDelegate.swedishToEnglish];
 }
 
 - (void)changeIndexLetters:(BOOL) swedish {
   // first time through set it up
   if(self.indexLetters == nil) {
-    self.indexLetters = [NSMutableArray arrayWithObjects: @"{search}", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"•", nil];
+    self.indexLetters = [NSMutableArray arrayWithObjects: @"{search}", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"Å", @"Ä", @"Ö", nil];
   }
   
-  if(swedish) {
-    // do this in inverse order to insert them with a constant
-    [self.indexLetters insertObject: @"Ö" atIndex: NUMBER_ENGLISH_LETTERS+1];
-    [self.indexLetters insertObject: @"Ä" atIndex: NUMBER_ENGLISH_LETTERS+1];
-    [self.indexLetters insertObject: @"Å" atIndex: NUMBER_ENGLISH_LETTERS+1];
-  }
-  else {
-    [self.indexLetters removeObjectsInArray: [NSArray arrayWithObjects: @"Å", @"Ä", @"Ö", nil]];
-  }
+  // TODO: once the refresh the index bug is fixed use this, but until then just display the Swedish alphabet language
+//  if(true || swedish) {
+//    [self.indexLetters addObject: @"Å"];
+//    [self.indexLetters addObject: @"Ä"];
+//    [self.indexLetters addObject: @"Ö"];
+//  }
+//  else {
+//    [self.indexLetters removeObjectsInArray: [NSArray arrayWithObjects: @"Å", @"Ä", @"Ö", nil]];
+//  }
 }
 
 - (IBAction)switchLanguage:(id)sender {
@@ -72,7 +69,7 @@
   // we need to get at properties in our app delegate
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
 
-  if(section == 0 || section == appDelegate.numberOfLetters+1) {
+  if(section == 0) {
    return 1; // return 1 for section 0 and MAX all other will be dynamic 
   }
   else {
@@ -89,8 +86,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   // the number of sections is the number of letters + 2 (searchBar and About)
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-  NSLog(@"# of sections %d", appDelegate.numberOfLetters+2);
-  return appDelegate.numberOfLetters+2;
+  NSLog(@"# of sections %d", appDelegate.numberOfLetters+1);
+  return appDelegate.numberOfLetters+1;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -99,20 +96,10 @@
   return self.indexLetters;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-  NSLog(@"sectionForSectionIndexTitle %@ %d", title, index);
-  return 0;
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
   // return nil for the searchBar (1st section) and About (last section)
   if(section == 0) {
     return nil;
-  }
-  else if (section == appDelegate.numberOfLetters+1) {
-    return @"";
   }
   else {
     // TODO: if there are no words return a blank string so the section header doesn't show
@@ -154,11 +141,9 @@
     myRect.size.width = 293;
     mySearchBar.frame = myRect;
     mySearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    mySearchBar.delegate = self;
     [cell.contentView addSubview:mySearchBar];
     [mySearchBar release];
-  }
-  else if(indexPath.section == appDelegate.numberOfLetters+1) {
-    cell.text = @"About";
   }
   else {
     NSLog(@"row %i %@", indexPath.row, [[appDelegate.words objectAtIndex:indexPath.row] word]);
@@ -173,32 +158,57 @@
   return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 
+}
 
-// TODO: figure out how to leave out the searchBar and About cells
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-  // Updates the appearance of the Edit|Done button as necessary.
-  [super setEditing:editing animated:animated];
-  [self.tableView setEditing:editing animated:YES];
-}  
-
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSLog(@"CAN EDIT ROW");
+  if(indexPath.section == 0) {
+    return NO;
+  }
+  else {
+    return YES;
+  }
+}
 #pragma mark TableView Delegate
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   return nil;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-  // TODO: should we retain this pointer or grab it all the time, what's better memory vs. speed?
-  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-  // TODO: change section 2 to MAX of our sections
-  if(indexPath.section == 0 || indexPath.section == appDelegate.numberOfLetters) {
+  NSLog(@"editingStyle");
+  if(indexPath.section == 0) {
     return UITableViewCellEditingStyleNone;
   }
   else {
+    NSLog(@"editingStyle delete");
     return UITableViewCellEditingStyleDelete;
   }
 }
 
+#pragma mark UISearchBarDelegate
+
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+//	searchBar.showsCancelButton = YES;
+//}
+//
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+//	mySearchBar.showsCancelButton = NO;
+//}
+//
+//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+//  [searchBar resignFirstResponder];
+//  [searchBar.text = @"";
+//}
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+  [searchBar resignFirstResponder];
+}
 
 @end

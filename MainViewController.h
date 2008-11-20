@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MainViewController : UIViewController {
+@interface MainViewController : UIViewController <UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource> {
   IBOutlet UITableView *tableView;
   IBOutlet UIBarButtonItem *languageSwitcherButton;
 
@@ -22,5 +22,9 @@
 
 - (IBAction)switchLanguage:(id)sender;
 - (void)changeIndexLetters:(BOOL) swedish;
+
+#pragma mark searchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
 
 @end
