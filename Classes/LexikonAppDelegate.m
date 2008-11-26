@@ -7,44 +7,31 @@
 //
 
 #import "LexikonAppDelegate.h"
-#import "Word.h"
+#import "FMDatabase.h"
 
 @class Word;
 
 @interface LexikonAppDelegate (Private)
 - (void)createEditableCopyOfDatabaseIfNeeded;
 - (void)initializeDatabase;
+- (void)initializeWords:(NSMutableDictionary *)words language:(int)language;
 @end
-
 
 @implementation LexikonAppDelegate
 
-@synthesize window, navigationController, words, swedishToEnglish, numberOfLetters;
-
+@synthesize window, navigationController, database, currentWords, englishWords, swedishWords, swedishToEnglish;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-//  [self createEditableCopyOfDatabaseIfNeeded];
-//  [self initializeDatabase];
+  [self createEditableCopyOfDatabaseIfNeeded];
+  [self initializeDatabase];
+  [self initializeWords:self.englishWords language:ENG_LANGUAGE];
+  [self initializeWords:self.swedishWords language:SWE_LANGUAGE];
 
   // default state of Swedish to English
   // TODO: change this to be saved via NSCoding to save state of the app
   self.swedishToEnglish = YES;
-  
-  // create some hardcoded words for now
-  Word *one = [[Word alloc] init];
-  one.word = @"Apple";
-  one.letter = @"A";
-  
-  Word *two = [[Word alloc] init];
-  two.word = @"Art";
-  two.letter = @"A";
-  
-  self.words = [NSMutableArray arrayWithObjects: one, two, nil];
-  
-  [one release];
-  [two release];
-  self.numberOfLetters = NUMBER_ENGLISH_LETTERS;
-  
+  self.currentWords = self.swedishWords; // point our current list to the Swedish words
+
   [window addSubview:navigationController.view];
   [window makeKeyAndVisible];
 }
@@ -53,17 +40,15 @@
   NSLog(@"MEMORY WARNING");
 }
 
-
-
-
 - (BOOL)toggleSwedishToEnglish {
+  // toggle the language, point our current words to the right dictionary
   if (self.swedishToEnglish) {
-    self.numberOfLetters = NUMBER_ENGLISH_LETTERS;
     self.swedishToEnglish = NO;
+    self.currentWords = self.englishWords;
   }
   else {
-    self.numberOfLetters = NUMBER_SWEDISH_LETTERS;
-    self.swedishToEnglish = YES;    
+    self.swedishToEnglish = YES;
+    self.currentWords = self.swedishWords;
   }
   return self.swedishToEnglish;
 }
@@ -72,67 +57,91 @@
 - (void)dealloc {
   [window release];
   [navigationController release];
-  [words release];
+  [currentWords release];
+  [englishWords release];
+  [swedishWords release];
   [super dealloc];
 }
 
 
 - (void)createEditableCopyOfDatabaseIfNeeded {
+  NSLog(@"created editable copy of database");
+  // this came from SQLite Books example app
   // First, test for existence.
-//  BOOL success;
-//  NSFileManager *fileManager = [NSFileManager defaultManager];
-//  NSError *error;
-//  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//  NSString *documentsDirectory = [paths objectAtIndex:0];
-//  NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"bookdb.sql"];
-//  success = [fileManager fileExistsAtPath:writableDBPath];
-//  if (success) return;
-//  // The writable database does not exist, so copy the default to the appropriate location.
-//  NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"database.sqlite3"];
-//  success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
-//  if (!success) {
-//    NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
-//  }
+  BOOL success;
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSError *error;
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"database.sqlite3"];
+  success = [fileManager fileExistsAtPath:writableDBPath];
+  if (success) return;
+  // The writable database does not exist, so copy the default to the appropriate location.
+  NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"database.sqlite3"];
+  success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
+  if (!success) {
+    NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+  }
 }
 
 - (void)initializeDatabase {
-//  NSMutableArray *bookArray = [[NSMutableArray alloc] init];
-//  self.books = bookArray;
-//  [bookArray release];
-//  // The database is stored in the application bundle. 
-//  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//  NSString *documentsDirectory = [paths objectAtIndex:0];
-//  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"database.sqlite3"];
-//  // Open the database. The database was prepared outside the application.
-//  if (sqlite3_open([path UTF8String], &database) == SQLITE_OK) {
-//    // Get the primary key for all books.
-//    const char *sql = "SELECT pk FROM book";
-//    sqlite3_stmt *statement;
-//    // Preparing a statement compiles the SQL query into a byte-code program in the SQLite library.
-//    // The third parameter is either the length of the SQL string or -1 to read up to the first null terminator.        
-//    if (sqlite3_prepare_v2(database, sql, -1, &statement, NULL) == SQLITE_OK) {
-//      // We "step" through the results - once for each row.
-//      while (sqlite3_step(statement) == SQLITE_ROW) {
-//        // The second parameter indicates the column index into the result set.
-//        int primaryKey = sqlite3_column_int(statement, 0);
-//        // We avoid the alloc-init-autorelease pattern here because we are in a tight loop and
-//        // autorelease is slightly more expensive than release. This design choice has nothing to do with
-//        // actual memory management - at the end of this block of code, all the book objects allocated
-//        // here will be in memory regardless of whether we use autorelease or release, because they are
-//        // retained by the books array.
-//        Book *book = [[Book alloc] initWithPrimaryKey:primaryKey database:database];
-//        [books addObject:book];
-//        [book release];
-//      }
-//    }
-//    // "Finalize" the statement - releases the resources associated with the statement.
-//    sqlite3_finalize(statement);
-//  } else {
-//    // Even though the open failed, call close to properly clean up resources.
-//    sqlite3_close(database);
-//    NSAssert1(0, @"Failed to open database with message '%s'.", sqlite3_errmsg(database));
-//    // Additional error handling, as appropriate...
-//  }
+  // setup access to the database
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"database.sqlite3"];
+  self.database = [FMDatabase databaseWithPath:path];
+  if ([self.database open]) {
+    [self.database setTraceExecution: YES];
+    [self.database setLogsErrors: YES];    
+  }
+  else {
+    NSAssert1(0, @"Could not open the database with message: %@", [self.database lastErrorMessage]);
+  }
+}
+
+- (void)initializeWords:(NSMutableDictionary *)words language:(int)language {
+  words = [[NSMutableDictionary alloc] init];  
+NSLog(@"run query");
+  NSLog(@"/database setup error? %d %d ", [self.database hadError], [self.database lastErrorCode]);
+  NSLog(@"database error: %@", [self.database lastErrorMessage]);
+
+  FMResultSet *rs = [database executeQuery:@"SELECT word FROM words WHERE lang = ? ORDER BY word", [NSNumber numberWithInt:language]];
+NSLog(@"/run query");
+  while ([rs next]) {
+    Word *newWord = [[Word alloc] init];
+    newWord.word = [rs stringForColumn:@"word"];
+    NSLog(@"new Word for lang %d %@", language, [rs stringForColumn:@"word"]);
+    // get a pointer to the array for the letter this word belongs to
+    NSMutableArray *wordsForLetter = [words objectForKey:newWord.letter];
+    // if we don't have an array set yet, create it.
+    if (wordsForLetter == nil) {
+      NSLog(@"creating new array");
+      // use this way so we can release this, the autorelease pool could get big
+      NSMutableArray *newWordsForLetter = [[NSMutableArray alloc] initWithObjects: newWord, nil];
+      NSLog(@"size of new array %d", [newWordsForLetter count]);
+      // add the array to the Dictionary
+      [words setObject:newWordsForLetter forKey:newWord.letter];
+      NSLog(@"letter: %@ for word: %@", newWord.letter, newWordsForLetter);
+      [newWordsForLetter release];
+    }
+    else {
+      // add the word to the array
+      [wordsForLetter addObject:newWord];
+      NSLog(@"array exists, adding new word size %d", [wordsForLetter count]);
+    }
+    [newWord release];
+  }
+  // close the result set.
+  [rs close];
+  
+  if (language == 0) {
+    self.englishWords = words;
+  }
+  else {
+    self.swedishWords = words;
+  }
+  
+  [words release];
 }
 
 

@@ -7,30 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <sqlite3.h>
-
-#define NUMBER_ENGLISH_LETTERS 26
-#define NUMBER_SWEDISH_LETTERS 29
+#import "FMDatabase.h"
+#import "Word.h"
 
 @interface LexikonAppDelegate : NSObject <UIApplicationDelegate> {
   IBOutlet UIWindow *window;
   IBOutlet UINavigationController *navigationController;
   IBOutlet UIBarButtonItem *languageSwitcherButton;
-  NSMutableArray *words;
+  NSMutableDictionary *currentWords;
+  NSMutableDictionary *englishWords;
+  NSMutableDictionary *swedishWords;
   BOOL swedishToEnglish;
-  NSInteger numberOfLetters;
-  
-  sqlite3 *database;
-  
+
+  FMDatabase *database;  
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;
 
-// Make the words available to other objects
-@property (nonatomic, retain) NSMutableArray *words;
+@property (nonatomic, retain) FMDatabase *database;
 
-@property (assign) NSInteger numberOfLetters;
+
+// Our word pointers, Eng and Swe contain the big lists and the current points to the current list
+@property (nonatomic, retain) NSMutableDictionary *currentWords;
+@property (nonatomic, retain) NSMutableDictionary *englishWords;
+@property (nonatomic, retain) NSMutableDictionary *swedishWords;
+
 @property (assign) BOOL swedishToEnglish;
 
 - (BOOL)toggleSwedishToEnglish;

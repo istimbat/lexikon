@@ -7,26 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <sqlite3.h>
+#import "FMDatabase.h"
+
+#define ENG_LANGUAGE 0
+#define SWE_LANGUAGE 1
 
 @interface Word : NSObject {
-  sqlite3 *database;
+  FMDatabase *database;  
   NSString *word;
-  NSString *letter;
   NSString *translation;
   BOOL hydrated;
 }
 
-@property (copy, nonatomic) NSString *word;
-@property (copy, nonatomic) NSString *letter;
-@property (copy, nonatomic) NSString *translation;
+@property (nonatomic, retain) NSString *word;
+@property (readonly) NSString *letter;
+@property (nonatomic, retain) NSString *translation;
 
 // insert a new word with its translation
-//+ (BOOL)insertNewWordIntoDatabase:(sqlite3 *)db;
++ (id)insertNewWordIntoDatabase:(NSString *) newWord withTranslation:(NSString *) newTranslation database:(FMDatabase *)db;
 
 // hydrate and dehydrate load and unload the translation into memory
-//- (void)hydrate;
-//- (void)dehydrate;
+- (void)hydrate;
+- (void)dehydrate;
 
 // remove the word from the database
 //- (void)deleteFromDatabase;
