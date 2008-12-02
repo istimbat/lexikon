@@ -37,5 +37,11 @@
 
 - (BOOL)toggleSwedishToEnglish;
 
+
+// for moving around the UITableViewIndex
+// from http://discussions.apple.com/message.jspa?messageID=8150124
+static BOOL tableViewIndexMoveIn(id self, SEL _cmd);
+static BOOL tableViewIndexMoveOut(id self, SEL _cmd);
+
 @end
 

@@ -21,19 +21,24 @@
 
 @synthesize window, navigationController, database, currentWords, englishWords, swedishWords, swedishToEnglish;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+  [window addSubview:navigationController.view];
+  [window makeKeyAndVisible];
+}
+
+- (void)awakeFromNib {
+  NSLog(@"AWWAKE FROM NIB");  
   [self createEditableCopyOfDatabaseIfNeeded];
   [self initializeDatabase];
   [self initializeWords:self.englishWords language:ENG_LANGUAGE];
   [self initializeWords:self.swedishWords language:SWE_LANGUAGE];
-
+  
   // default state of Swedish to English
   // TODO: change this to be saved via NSCoding to save state of the app
   self.swedishToEnglish = YES;
   self.currentWords = self.swedishWords; // point our current list to the Swedish words
-
-  [window addSubview:navigationController.view];
-  [window makeKeyAndVisible];
+  
+  NSLog(@"DONE AWAKING");
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -143,6 +148,5 @@ NSLog(@"/run query");
   
   [words release];
 }
-
 
 @end

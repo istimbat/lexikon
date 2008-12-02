@@ -10,18 +10,20 @@
 #import "Word.h"
 #import "LexikonAppDelegate.h"
 
+
 @implementation MainViewController
 
 @synthesize tableView, indexLetters;
 
 - (void)awakeFromNib {
+  NSLog(@"Awake from nib");
   // we need to get at properties of our application delegate
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   
   // make it so the index is always displayed
   tableView.sectionIndexMinimumDisplayRowCount = 1;
-
-  [self changeIndexLetters: !appDelegate.swedishToEnglish];
+  NSLog(@"SWE TO ENG: %d", appDelegate.swedishToEnglish);
+  [self changeIndexLetters: appDelegate.swedishToEnglish];
 }
 
 - (void)changeIndexLetters:(BOOL) swedish {
@@ -43,7 +45,7 @@
 
 - (IBAction)switchLanguage:(id)sender {
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
+  
   BOOL swedish = [appDelegate toggleSwedishToEnglish];
   
   if(swedish) {
@@ -67,28 +69,28 @@
 #pragma mark TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if(section == 0) {
-   return 1; // return 1 for section 0 and MAX all other will be dynamic 
+    return 1; // return 1 for section 0 and MAX all other will be dynamic 
   }
   else {
     // we need to get at properties in our app delegate
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    
     NSString *sectionLetter = [self.indexLetters objectAtIndex:section-1];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
     
-    NSLog(@"numberOfRowsInSection: %d %@ %d", section, sectionLetter, [wordsForSection count]);
+    //NSLog(@"numberOfRowsInSection: %d %@ %d", section, sectionLetter, [wordsForSection count]);
     return [wordsForSection count];
   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   // the number of sections is the number of letters + 2 (searchBar and About)
-  NSLog(@"# of sections %d", [self.indexLetters count]+1);
+  //NSLog(@"# of sections %d", [self.indexLetters count]+1);
   return [self.indexLetters count]+1;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-  NSLog(@"indexTitlesForTableView");
+  //NSLog(@"indexTitlesForTableView");
   return self.indexLetters;
 }
 
@@ -98,9 +100,9 @@
     return nil;
   }
   else {
-//    NSLog(@"section # %d", section);
+    //    NSLog(@"section # %d", section);
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    
     // if there are no words for a letter return a blank string so the UI isn't cluttered
     NSString *sectionLetter = [self.indexLetters objectAtIndex:section-1];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
@@ -120,9 +122,9 @@
   
   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
   if(cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:identifier] autorelease];    
+    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:identifier] autorelease];
   }
-
+  
   //NSLog(@"Row: %i,%i ID: %@", indexPath.section, indexPath.row, identifier);
   if(indexPath.section == 0) {
     // TODO: navigation bar or image to fill in the gap so our seach bar can be 293 pixels and not over the index
@@ -137,7 +139,8 @@
     [mySearchBar setTintColor: [UIColor colorWithRed:0.769 green:0.80 blue:0.824 alpha:1.0]];
     [mySearchBar sizeToFit];
     CGRect myRect = mySearchBar.frame;
-    myRect.size.width = 293;
+    myRect.size.width = 290;
+    //    myRect.origin.x = 0.0;
     mySearchBar.frame = myRect;
     mySearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     mySearchBar.delegate = self;
@@ -146,10 +149,10 @@
   }
   else {
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
+    
     NSString *sectionLetter = [self.indexLetters objectAtIndex:indexPath.section-1];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
-
+    
     NSLog(@"row %i %@", indexPath.row, [[wordsForSection objectAtIndex:indexPath.row] word]);
     cell.text = [[wordsForSection objectAtIndex:indexPath.row] word];
   }
@@ -158,11 +161,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+  
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"CAN EDIT ROW");
   if(indexPath.section == 0) {
     return NO;
   }
@@ -176,12 +178,13 @@
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"editingStyle");
+  return UITableViewCellEditingStyleNone;
+  // TODO: clean up right now the index covers the delete button.
+  
   if(indexPath.section == 0) {
     return UITableViewCellEditingStyleNone;
   }
   else {
-    NSLog(@"editingStyle delete");
     return UITableViewCellEditingStyleDelete;
   }
 }
@@ -201,6 +204,58 @@
 //  [searchBar.text = @"";
 //}
 
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)theSearchBar {
+  [self hideIndexAndSearchBar:theSearchBar hide:YES];
+  
+  return YES;
+}
+
+- (void)hideIndexAndSearchBar:(UISearchBar *)theSearchBar hide:(BOOL)hide {
+  CGFloat factor = (hide) ? 30.0 : -30.0;
+  
+  // setup the animation
+  [UIView beginAnimations:nil context:nil];
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDidStopSelector:@selector(hideIndexAndSearchBarDidStop:finished:context:)];
+  [UIView setAnimationDelegate: self];
+  
+  // change the UISearchBar's size
+  theSearchBar.frame = CGRectMake(theSearchBar.frame.origin.x, 
+                                  theSearchBar.frame.origin.y, 
+                                  theSearchBar.frame.size.width + factor, 
+                                  theSearchBar.frame.size.height);
+  
+  
+  // move the index out of the way
+  for ( UIView *view in tableView.subviews ) {
+    if ([view isKindOfClass:NSClassFromString(@"UITableViewIndex")]) {
+      view.center = CGPointMake(view.center.x + factor, view.center.y);
+    }
+  }
+  [UIView commitAnimations];
+}
+
+
+- (void)hideIndexAndSearchBarDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
+  for ( UIView *view in tableView.subviews ) {
+    if ([view isKindOfClass:NSClassFromString(@"UITableViewIndex")]) {
+      if (view.hidden) {
+        view.hidden = NO;
+      }
+      else {
+        view.hidden = YES;
+      }
+    }
+  }
+  [UIView commitAnimations];
+}
+
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)theSearchBar {
+  [self hideIndexAndSearchBar:theSearchBar hide:NO];
+  
+	return YES;
+}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
   
@@ -209,5 +264,6 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   [searchBar resignFirstResponder];
 }
+
 
 @end

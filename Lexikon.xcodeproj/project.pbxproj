@@ -16,7 +16,6 @@
 		3C0911000EDCB7F500A982E9 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0910F90EDCB7F400A982E9 /* FMDatabase.m */; };
 		3C0911010EDCB7F500A982E9 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0910FB0EDCB7F400A982E9 /* FMDatabaseAdditions.m */; };
 		3C0911020EDCB7F500A982E9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0910FD0EDCB7F400A982E9 /* FMResultSet.m */; };
-		3C0911030EDCB7F500A982E9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C0910FE0EDCB7F400A982E9 /* LICENSE.txt */; };
 		3C0911FF0EDDA7AF00A982E9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0911FE0EDDA7AF00A982E9 /* libsqlite3.dylib */; };
 		3C20A3350ECCA0D3003F3BBC /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C20A3340ECCA0D3003F3BBC /* Word.m */; };
 		3C5615C30EBB39E8008FB33F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5615C20EBB39E8008FB33F /* MainViewController.m */; };
@@ -39,7 +38,6 @@
 		3C0910FB0EDCB7F400A982E9 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		3C0910FC0EDCB7F400A982E9 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		3C0910FD0EDCB7F400A982E9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		3C0910FE0EDCB7F400A982E9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		3C0911FE0EDDA7AF00A982E9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3C20A3330ECCA0D3003F3BBC /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
 		3C20A3340ECCA0D3003F3BBC /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				3C0910FB0EDCB7F400A982E9 /* FMDatabaseAdditions.m */,
 				3C0910FC0EDCB7F400A982E9 /* FMResultSet.h */,
 				3C0910FD0EDCB7F400A982E9 /* FMResultSet.m */,
-				3C0910FE0EDCB7F400A982E9 /* LICENSE.txt */,
 			);
 			name = fmdb;
 			sourceTree = "<group>";
@@ -195,7 +192,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				3C7E70890ED5F2B50022B3A9 /* database.sqlite3 in Resources */,
-				3C0911030EDCB7F500A982E9 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

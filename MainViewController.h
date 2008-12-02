@@ -27,4 +27,6 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
 
+- (void)hideIndexAndSearchBar:(UISearchBar *)theSearchBar hide:(BOOL)hide;
+
 @end
