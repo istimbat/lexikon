@@ -344,13 +344,25 @@
 		vrLoc = 1435;
 	};
 	3C0910F80EDCB7F400A982E9 /* FMDatabase.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = FMDatabase.h;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMDatabase.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {768, 1155}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1155}}";
 			sepNavSelRange = "{533, 13}";
-			sepNavVisRange = "{241, 1106}";
+			sepNavVisRange = "{218, 1129}";
 		};
 	};
 	3C0910F90EDCB7F400A982E9 /* FMDatabase.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FMDatabase.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMDatabase.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {768, 7326}}";
 			sepNavSelRange = "{9486, 4}";
@@ -358,6 +370,12 @@
 		};
 	};
 	3C0910FA0EDCB7F400A982E9 /* FMDatabaseAdditions.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = FMDatabaseAdditions.h;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMDatabaseAdditions.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {768, 514}}";
 			sepNavSelRange = "{0, 0}";
@@ -365,6 +383,12 @@
 		};
 	};
 	3C0910FB0EDCB7F400A982E9 /* FMDatabaseAdditions.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FMDatabaseAdditions.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMDatabaseAdditions.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {768, 561}}";
 			sepNavSelRange = "{0, 0}";
@@ -372,6 +396,12 @@
 		};
 	};
 	3C0910FC0EDCB7F400A982E9 /* FMResultSet.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = FMResultSet.h;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMResultSet.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {768, 583}}";
 			sepNavSelRange = "{0, 0}";
@@ -379,6 +409,12 @@
 		};
 	};
 	3C0910FD0EDCB7F400A982E9 /* FMResultSet.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FMResultSet.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/FMResultSet.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 3663}}";
 			sepNavSelRange = "{0, 0}";
@@ -559,6 +595,12 @@
 		vrLoc = 0;
 	};
 	3C20A3330ECCA0D3003F3BBC /* Word.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = Word.h;
+		path = /Users/caleb/src/Lexikon/Lexikon/Word.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {768, 537}}";
 			sepNavSelRange = "{647, 0}";
@@ -566,6 +608,12 @@
 		};
 	};
 	3C20A3340ECCA0D3003F3BBC /* Word.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = Word.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/Word.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1004, 766}}";
 			sepNavSelRange = "{905, 82}";
@@ -633,6 +681,12 @@
 		vrLoc = 0;
 	};
 	3C5615C10EBB39E8008FB33F /* MainViewController.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = MainViewController.h;
+		path = /Users/caleb/src/Lexikon/Lexikon/MainViewController.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 503}}";
 			sepNavSelRange = "{867, 0}";
@@ -640,10 +694,16 @@
 		};
 	};
 	3C5615C20EBB39E8008FB33F /* MainViewController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = MainViewController.m;
+		path = /Users/caleb/src/Lexikon/Lexikon/MainViewController.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1404, 2959}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1404, 3080}}";
 			sepNavSelRange = "{8182, 0}";
-			sepNavVisRange = "{7156, 1526}";
+			sepNavVisRange = "{7210, 1472}";
 		};
 	};
 	3C5615D60EBB3A75008FB33F /* PBXTextBookmark */ = {
