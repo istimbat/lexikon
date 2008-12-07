@@ -354,13 +354,17 @@
       NSLog(@"start: %d end: %d", start.location, end.location);
       
       translation = [translation substringWithRange: myRange];
+      
+      // add the word to the list and show it
     }
     else {
       translation = @"Word Not Found";
+      // display error message
     }
   }
   else {
     translation = @"Error reaching lexikon website";
+    // display error message
   }  
 
   // hide the activity indicator

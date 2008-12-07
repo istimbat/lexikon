@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
+									<integer>4</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -300,7 +300,7 @@
 							<real>246</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>195 121 1175 753 0 0 1440 878 </string>
+						<string>256 125 1175 753 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DetailViewController.m</string>
+								<string>MainViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DetailViewController.m</string>
+										<string>MainViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3C1455940EEC4BDD00314717</string>
+										<string>3C1455AA0EEC500B00314717</string>
 										<key>history</key>
 										<array>
 											<string>3CE4FBD00EBB21220088EBD7</string>
@@ -349,12 +349,12 @@
 											<string>3C1455010EEC3A0500314717</string>
 											<string>3C1455050EEC3A0500314717</string>
 											<string>3C1455070EEC3A0500314717</string>
-											<string>3C14552F0EEC3BD200314717</string>
-											<string>3C1455300EEC3BD200314717</string>
-											<string>3C14555C0EEC3CDB00314717</string>
-											<string>3C14557E0EEC425E00314717</string>
 											<string>3C14557F0EEC425E00314717</string>
-											<string>3C1455770EEC411B00314717</string>
+											<string>3C14559E0EEC500B00314717</string>
+											<string>3C14559F0EEC500B00314717</string>
+											<string>3C1455A00EEC500B00314717</string>
+											<string>3C1455A10EEC500B00314717</string>
+											<string>3C1455A20EEC500B00314717</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -431,6 +431,13 @@
 											<string>3C1455790EEC411B00314717</string>
 											<string>3C1455800EEC425E00314717</string>
 											<string>3C1455810EEC425E00314717</string>
+											<string>3C1455A30EEC500B00314717</string>
+											<string>3C1455A40EEC500B00314717</string>
+											<string>3C1455A50EEC500B00314717</string>
+											<string>3C1455A60EEC500B00314717</string>
+											<string>3C1455A70EEC500B00314717</string>
+											<string>3C1455A80EEC500B00314717</string>
+											<string>3C1455A90EEC500B00314717</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -444,7 +451,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {907, 558}}</string>
 								<key>RubberWindowFrame</key>
-								<string>195 121 1175 753 0 0 1440 878 </string>
+								<string>256 125 1175 753 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -464,7 +471,7 @@
 								<key>Frame</key>
 								<string>{{0, 563}, {907, 149}}</string>
 								<key>RubberWindowFrame</key>
-								<string>195 121 1175 753 0 0 1440 878 </string>
+								<string>256 125 1175 753 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -628,11 +635,11 @@
 		<string>3C1455620EEC3CDB00314717</string>
 		<string>3C5615CC0EBB3A4E008FB33F</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/caleb/src/Lexikon/Lexikon/Lexikon.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/caleb/src/Lexikon/Lexikon/Lexikon.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>195 121 1175 753 0 0 1440 878 </string>
+	<string>256 125 1175 753 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
