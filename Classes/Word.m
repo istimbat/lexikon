@@ -7,13 +7,14 @@
 //
 
 #import "Word.h"
+#import "LexikonAppDelegate.h"
 
 @implementation Word
 
-@synthesize word;
+@synthesize word, lang, translation;
 
-+ (id)insertNewWordIntoDatabase:(NSString *) newWord withTranslation:(NSString *) newTranslation database:(FMDatabase *)db {
-  // TODO: put in the database
+//+ (id)insertNewWordIntoDatabase:(NSString *) newWord language:(int) lang withTranslation:(NSString *) newTranslation database:(FMDatabase *)db {
+// TODO: put in the database
   
 //  [[self alloc] init];
 //  
@@ -21,13 +22,16 @@
 //  self.word = newWord;
 //  self.translation = newTranslation;
 //  
-  return [self autorelease];
-}
+//  return [self autorelease];
+//}
 
 //- (id)initWithWord:(NSString *) newWord {
 //  self.word = newWord;
 //}
 
+- (NSString *)description {
+  return word;
+}
 
 - (NSString *)letter {
   return [[word substringToIndex: 1] uppercaseString];
@@ -41,13 +45,10 @@
   return translation;
 }
 
-- (NSString *)description {
-  return self.word;
-}
-
 - (void)hydrate {
-  // TODO: load the translation from the database
-  [[translation alloc] initWithString: @"TODO make this come from the database"];
+  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
+  
+  translation = [appDelegate.database stringForQuery:@"SELECT translation FROM words WHERE word = ? AND lang = ?", word, [NSNumber numberWithInt:lang]];
   
   hydrated = YES;
 }

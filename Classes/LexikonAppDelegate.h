@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 #import "Word.h"
 
 @interface LexikonAppDelegate : NSObject <UIApplicationDelegate> {
@@ -36,12 +37,7 @@
 @property (assign) BOOL swedishToEnglish;
 
 - (BOOL)toggleSwedishToEnglish;
-
-
-// for moving around the UITableViewIndex
-// from http://discussions.apple.com/message.jspa?messageID=8150124
-static BOOL tableViewIndexMoveIn(id self, SEL _cmd);
-static BOOL tableViewIndexMoveOut(id self, SEL _cmd);
-
+- (void)addWordToDictionary:(NSMutableDictionary *)words word:(Word *)word andDatabase:(BOOL) andDatabase;
+- (void)removeWordAtSectionLetter:(NSString *) sectionLetter index:(NSUInteger) index;
 @end
 

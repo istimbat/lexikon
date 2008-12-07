@@ -27,7 +27,6 @@
 }
 
 - (void)awakeFromNib {
-  NSLog(@"AWWAKE FROM NIB");  
   [self createEditableCopyOfDatabaseIfNeeded];
   [self initializeDatabase];
   [self initializeWords:self.englishWords language:ENG_LANGUAGE];
@@ -37,8 +36,6 @@
   // TODO: change this to be saved via NSCoding to save state of the app
   self.swedishToEnglish = YES;
   self.currentWords = self.swedishWords; // point our current list to the Swedish words
-  
-  NSLog(@"DONE AWAKING");
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -70,7 +67,6 @@
 
 
 - (void)createEditableCopyOfDatabaseIfNeeded {
-  NSLog(@"created editable copy of database");
   // this came from SQLite Books example app
   // First, test for existence.
   BOOL success;
@@ -96,50 +92,74 @@
   NSString *path = [documentsDirectory stringByAppendingPathComponent:@"database.sqlite3"];
   self.database = [FMDatabase databaseWithPath:path];
   if ([self.database open]) {
-    [self.database setTraceExecution: YES];
-    [self.database setLogsErrors: YES];    
+//    [self.database setTraceExecution: YES];
+//    [self.database setLogsErrors: YES];    
   }
   else {
     NSAssert1(0, @"Could not open the database with message: %@", [self.database lastErrorMessage]);
   }
 }
 
+- (void)removeWordAtSectionLetter:(NSString *) sectionLetter index:(NSUInteger) index {
+  NSMutableArray *wordsForSection = [currentWords objectForKey:sectionLetter];
+  Word *myWord = [wordsForSection objectAtIndex:index];
+
+  if ([database executeUpdate:@"DELETE FROM words WHERE word = ? AND lang = ?", myWord.word, [NSNumber numberWithInt:myWord.lang]]) {
+    NSLog(@"Deleted word from database");
+  }
+  else {
+    NSLog(@"unable to delete %@ from database", myWord);
+  }
+  
+  [wordsForSection removeObjectAtIndex:index];
+}
+
+- (void)addWordToDictionary:(NSMutableDictionary *)words word:(Word *)newWord andDatabase:(BOOL) andDatabase {
+  // get a pointer to the array for the letter this word belongs to
+  NSMutableArray *wordsForLetter = [words objectForKey:newWord.letter];
+  // if we don't have an array set yet, create it.
+  if (wordsForLetter == nil) {
+    // use this way so we can release this, the autorelease pool could get big
+    NSMutableArray *newWordsForLetter = [[NSMutableArray alloc] initWithObjects: newWord, nil];
+    
+    // add the array to the Dictionary
+    [words setObject:newWordsForLetter forKey:newWord.letter];
+        
+    [newWordsForLetter release];
+  }
+  else {
+    // add the word to the array
+    [wordsForLetter addObject:newWord];
+  }
+    
+  if (andDatabase) {
+    if ([database executeUpdate:@"REPLACE INTO words(word, lang, translation) VALUES(?, ?, ?)", newWord.word, newWord.lang, newWord.translation]) {
+      NSLog(@"Added word to database too");
+    }
+    else {
+      NSLog(@"Error adding word to database");
+    }
+  }
+    
+}
+
 - (void)initializeWords:(NSMutableDictionary *)words language:(int)language {
   words = [[NSMutableDictionary alloc] init];  
-NSLog(@"run query");
-  NSLog(@"/database setup error? %d %d ", [self.database hadError], [self.database lastErrorCode]);
-  NSLog(@"database error: %@", [self.database lastErrorMessage]);
 
   FMResultSet *rs = [database executeQuery:@"SELECT word FROM words WHERE lang = ? ORDER BY word", [NSNumber numberWithInt:language]];
-NSLog(@"/run query");
   while ([rs next]) {
     Word *newWord = [[Word alloc] init];
     newWord.word = [rs stringForColumn:@"word"];
-    NSLog(@"new Word for lang %d %@", language, [rs stringForColumn:@"word"]);
-    // get a pointer to the array for the letter this word belongs to
-    NSMutableArray *wordsForLetter = [words objectForKey:newWord.letter];
-    // if we don't have an array set yet, create it.
-    if (wordsForLetter == nil) {
-      NSLog(@"creating new array");
-      // use this way so we can release this, the autorelease pool could get big
-      NSMutableArray *newWordsForLetter = [[NSMutableArray alloc] initWithObjects: newWord, nil];
-      NSLog(@"size of new array %d", [newWordsForLetter count]);
-      // add the array to the Dictionary
-      [words setObject:newWordsForLetter forKey:newWord.letter];
-      NSLog(@"letter: %@ for word: %@", newWord.letter, newWordsForLetter);
-      [newWordsForLetter release];
-    }
-    else {
-      // add the word to the array
-      [wordsForLetter addObject:newWord];
-      NSLog(@"array exists, adding new word size %d", [wordsForLetter count]);
-    }
+    newWord.lang = language;
+
+    [self addWordToDictionary:words word:newWord andDatabase:NO];
+    
     [newWord release];
   }
   // close the result set.
   [rs close];
   
-  if (language == 0) {
+  if (language == ENG_LANGUAGE) {
     self.englishWords = words;
   }
   else {
