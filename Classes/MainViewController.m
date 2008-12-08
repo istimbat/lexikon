@@ -84,33 +84,34 @@
 #pragma mark TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if(section == 0) {
+//    NSLog(@"-numberOfRowsInSection: %d 1", section);
     return 1; // return 1 for section 0 and MAX all other will be dynamic 
   }
   else {
     // we need to get at properties in our app delegate
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    NSString *sectionLetter = [self.indexLetters objectAtIndex:section-1];
+    //NSLog(@"%@", self.indexLetters);
+    NSString *sectionLetter = [self.indexLetters objectAtIndex:section];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
-    
-    //NSLog(@"numberOfRowsInSection: %d %@ %d", section, sectionLetter, [wordsForSection count]);
+
+//    NSLog(@"numberOfRowsInSection: %d %@ %d", section, sectionLetter, [wordsForSection count]);
+
     return [wordsForSection count];
   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  // the number of sections is the number of letters + 2 (searchBar and About)
-  //NSLog(@"# of sections %d", [self.indexLetters count]+1);
-  return [self.indexLetters count]+1;
+//  NSLog(@"# of sections %d", [self.indexLetters count]);
+  return [self.indexLetters count];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-  //NSLog(@"indexTitlesForTableView");
+//  NSLog(@"indexTitlesForTableView %d", [self.indexLetters count]);
   return self.indexLetters;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  // return nil for the searchBar (1st section) and About (last section)
+  // return nil for the searchBar (1st section)
   if(section == 0) {
     return nil;
   }
@@ -119,7 +120,7 @@
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // if there are no words for a letter return a blank string so the UI isn't cluttered
-    NSString *sectionLetter = [self.indexLetters objectAtIndex:section-1];
+    NSString *sectionLetter = [self.indexLetters objectAtIndex:section];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
     if(wordsForSection == nil || [wordsForSection count] == 0) {
       return @"";
@@ -155,8 +156,7 @@
       UISearchBar *aSearchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
       [aSearchBar setTintColor: [UIColor colorWithRed:0.769 green:0.80 blue:0.824 alpha:1.0]];
       [aSearchBar sizeToFit];
-      aSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
-      //aSearchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//      aSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
       aSearchBar.delegate = self;
 
       aSearchBar.frame = CGRectMake(0, 0, 290, 44);
@@ -167,11 +167,11 @@
   }
   else {
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    NSString *sectionLetter = [self.indexLetters objectAtIndex:indexPath.section-1];
+    NSString *sectionLetter = [self.indexLetters objectAtIndex:indexPath.section];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
     
     cell.text = [[wordsForSection objectAtIndex:indexPath.row] word];
+//    NSLog(@"SECTION: %d ROW: %d CELL: %@", indexPath.section, indexPath.row, cell.text);
   }
   
   return cell;
@@ -182,7 +182,7 @@
 
   if (editingStyle == UITableViewCellEditingStyleDelete) {    
     // first remove from our word list and the database
-    [appDelegate removeWordAtSectionLetter:[self.indexLetters objectAtIndex:indexPath.section-1] index:indexPath.row];
+    [appDelegate removeWordAtSectionLetter:[self.indexLetters objectAtIndex:indexPath.section] index:indexPath.row];
     // remove from the tableview
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
   }
@@ -203,15 +203,19 @@
     detailViewController = [[DetailViewController alloc] init];
   }
   
-  detailViewController.word = word.word;
-  detailViewController.html = word.translation;
-  NSLog(@"SELECT ROW for %@", detailViewController.word);
+  detailViewController.word = [word.word copy];
+  detailViewController.html = [NSString stringWithContentsOfFile: [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"translationTemplate.html"]];
+  detailViewController.html = [detailViewController.html stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
+//  detailViewController.html = [word.translation copy];
   [self.navigationController pushViewController:detailViewController animated:YES];  
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    return nil;
+  }
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-  NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:[self.indexLetters objectAtIndex:indexPath.section-1]];
+  NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:[self.indexLetters objectAtIndex:indexPath.section]];
   Word *myWord = [wordsForSection objectAtIndex:indexPath.row];
   
   [self viewWord: myWord];
@@ -239,23 +243,17 @@
 
 #pragma mark UISearchBarDelegate
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-  NSLog(@"TEXT DID END EDITING");
-}
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)theSearchBar {
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
   [self hideIndex:YES];
   searching = YES;
-  return YES;
 }
 
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
   NSLog(@"Should End Editing");
   [self hideIndex:NO];
   searching = NO;
   // just in case the language was toggled reload the table
-  [tableView reloadData];
-	return YES;
+  //[tableView reloadData];
 }
 
 - (void)doneSearching {
@@ -266,13 +264,17 @@
 - (void)hideIndex:(BOOL) hide {
   CGFloat factor = (hide) ? 30.0 : -30.0;
   
+  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
+  NSLog(@"# of word arrays %d", [appDelegate.currentWords count]);
   UIBarButtonItem *buttonItem;
   
   // change the About button to a done button
   if (hide) {
+    tableView.sectionIndexMinimumDisplayRowCount = NSIntegerMax;
     buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneSearching)];
   }
   else {
+    tableView.sectionIndexMinimumDisplayRowCount = 1;
     buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAbout)];
   }
   self.navigationItem.rightBarButtonItem = buttonItem;
@@ -298,28 +300,11 @@
   [UIView commitAnimations];
 }
 
-- (void)hideIndexAndSearchBarDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
-//  for ( UIView *view in tableView.subviews ) {
-//    if ([view isKindOfClass:NSClassFromString(@"UITableViewIndex")]) {
-//      if (! view.hidden) {
-        // right now this is only called if the view was showing at first
-//        view.hidden = YES;
-//      }
-//    }
-//  }
-//  [UIView commitAnimations];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-  
-}
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   NSLog(@"searching button clicked %@", searchBar);
   [searchBar resignFirstResponder];
   
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
   NSString *translationString;
@@ -338,11 +323,11 @@
   }
   
   // clean up the special chars  
-  translationURL = [translationURL initWithString: translationString];
+  translationURL = [NSURL URLWithString:translationString];
     
   // get the html contents in a string
   NSError *myError;
-  translation = [translation initWithContentsOfURL:translationURL encoding:encoding error:&myError];
+  translation = [NSString stringWithContentsOfURL:translationURL encoding:encoding error:&myError];
   
   if(translation != nil) {
     start = [translation rangeOfString:@"<DL>"];
@@ -354,8 +339,15 @@
       NSLog(@"start: %d end: %d", start.location, end.location);
       
       translation = [translation substringWithRange: myRange];
-      
-      // add the word to the list and show it
+
+      Word *newWord = [[Word alloc] init];
+      newWord.word = searchBar.text;
+      newWord.lang = (appDelegate.swedishToEnglish) ? SWE_LANGUAGE : ENG_LANGUAGE;
+      newWord.translation = translation;
+
+      [appDelegate addWordToDictionary:appDelegate.currentWords word:newWord andDatabase:YES];
+
+      [self viewWord:newWord];
     }
     else {
       translation = @"Word Not Found";
@@ -366,7 +358,7 @@
     translation = @"Error reaching lexikon website";
     // display error message
   }  
-
+  
   // hide the activity indicator
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
   searchBar.text = @"";

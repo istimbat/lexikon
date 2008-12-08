@@ -13,22 +13,6 @@
 
 @synthesize word, lang, translation;
 
-//+ (id)insertNewWordIntoDatabase:(NSString *) newWord language:(int) lang withTranslation:(NSString *) newTranslation database:(FMDatabase *)db {
-// TODO: put in the database
-  
-//  [[self alloc] init];
-//  
-//  self.database = db;
-//  self.word = newWord;
-//  self.translation = newTranslation;
-//  
-//  return [self autorelease];
-//}
-
-//- (id)initWithWord:(NSString *) newWord {
-//  self.word = newWord;
-//}
-
 - (NSString *)description {
   return word;
 }
@@ -46,6 +30,7 @@
 }
 
 - (void)hydrate {
+  NSLog(@"hydrating");
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   
   translation = [appDelegate.database stringForQuery:@"SELECT translation FROM words WHERE word = ? AND lang = ?", word, [NSNumber numberWithInt:lang]];
@@ -54,6 +39,7 @@
 }
 
 - (void)dehydrate {
+  NSLog(@"dehydrating");
   [translation release];
   
   hydrated = NO;

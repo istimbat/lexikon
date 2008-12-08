@@ -21,7 +21,7 @@
 - (void)viewWillAppear:(BOOL)animated {  
   [super viewWillAppear:animated];
   self.title = word;
-  [webView loadHTMLString:html baseURL:[NSURL URLWithString:word]];  
+  [webView loadHTMLString:html baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1/%@", word]]];
 }
 
 - (void)didReceiveMemoryWarning {

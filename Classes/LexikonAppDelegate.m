@@ -40,6 +40,12 @@
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
   NSLog(@"MEMORY WARNING");
+  for (NSString *letter in swedishWords) {
+    [[swedishWords objectForKey:letter] makeObjectsPerformSelector:@selector(dehydrate)];
+  }
+  for (NSString *letter in englishWords) {
+    [[englishWords objectForKey:letter] makeObjectsPerformSelector:@selector(dehydrate)];
+  }
 }
 
 - (BOOL)toggleSwedishToEnglish {
@@ -131,9 +137,13 @@
     // add the word to the array
     [wordsForLetter addObject:newWord];
   }
-    
+
   if (andDatabase) {
-    if ([database executeUpdate:@"REPLACE INTO words(word, lang, translation) VALUES(?, ?, ?)", newWord.word, newWord.lang, newWord.translation]) {
+    // if we are adding to the database we need to sort the array since we aren't pulling out of the database alphabetically
+    [wordsForLetter sortUsingSelector:@selector(compare:)];
+    newWord.word = [newWord.word capitalizedString];
+    
+    if ([database executeUpdate:@"REPLACE INTO words(word, lang, translation) VALUES(?, ?, ?)", [newWord.word capitalizedString], [NSNumber numberWithInt:newWord.lang], newWord.translation]) {
       NSLog(@"Added word to database too");
     }
     else {

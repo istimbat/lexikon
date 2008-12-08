@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@class DetailViewController;
+@class DetailViewController, Word;
 
 @interface MainViewController : UITableViewController <UISearchBarDelegate> {
   IBOutlet UITableView *tableView;
@@ -29,10 +29,6 @@
 - (void)changeIndexLetters:(BOOL) swedish;
 
 - (void)viewWord:(Word *) word;
-  
-#pragma mark searchBarDelegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;
 
 - (void)hideIndex:(BOOL) hide;
 @end
