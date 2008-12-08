@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) NSString *word;
-@property (nonatomic, retain) NSString *html;
+@property (nonatomic, copy) NSString *word;
+@property (nonatomic, copy) NSString *html;
 
 @end

@@ -203,10 +203,10 @@
     detailViewController = [[DetailViewController alloc] init];
   }
   
-  detailViewController.word = [word.word copy];
+  detailViewController.word = word.word;
   detailViewController.html = [NSString stringWithContentsOfFile: [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"translationTemplate.html"]];
   detailViewController.html = [detailViewController.html stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
-//  detailViewController.html = [word.translation copy];
+
   [self.navigationController pushViewController:detailViewController animated:YES];  
 }
 

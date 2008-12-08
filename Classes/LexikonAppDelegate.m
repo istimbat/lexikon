@@ -134,8 +134,15 @@
     [newWordsForLetter release];
   }
   else {
-    // add the word to the array
-    [wordsForLetter addObject:newWord];
+    NSUInteger index = [wordsForLetter indexOfObject:newWord];
+    if (index == NSNotFound) {
+      // add the word to the array
+      [wordsForLetter addObject:newWord];      
+    }
+    else {
+      // this word was already in the wordList, update the word object
+      [[wordsForLetter objectAtIndex:index] setTranslation:newWord.translation];
+    }
   }
 
   if (andDatabase) {
