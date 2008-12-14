@@ -67,10 +67,7 @@
   
   [self changeIndexLetters: swedish];
   
-  if (! searching) {
-    // we don't want to reload the main table if we are currently searching
-    [self.tableView reloadData];    
-  }
+  [self.tableView reloadData];    
 }
 
 - (void)showAbout {
@@ -253,7 +250,7 @@
   [self hideIndex:NO];
   searching = NO;
   // just in case the language was toggled reload the table
-  //[tableView reloadData];
+  [tableView reloadData];
 }
 
 - (void)doneSearching {
