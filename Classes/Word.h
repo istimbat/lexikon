@@ -34,5 +34,7 @@
 // remove the word from the database
 //- (void)deleteFromDatabase;
 - (NSString *)description;
+- (NSComparisonResult)compare:(Word *)aWord;
+- (BOOL)isEqual:(Word *)aWord;
 
 @end

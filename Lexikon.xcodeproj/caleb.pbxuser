@@ -22,7 +22,7 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 3CE4FB0D0EB9FB0F0088EBD7 /* Lexikon */;
 		activeSDKPreference = iphoneos2.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Lexikon */;
@@ -452,7 +452,7 @@
 		fRef = 3CF7D6530EE555120086D98C /* MainViewController.m */;
 		name = "MainViewController.m: 300";
 		rLen = 26;
-		rLoc = 10719;
+		rLoc = 10645;
 		rType = 0;
 		vrLen = 1969;
 		vrLoc = 9508;
@@ -482,7 +482,7 @@
 		fRef = 3CF7D6530EE555120086D98C /* MainViewController.m */;
 		name = "MainViewController.m: 254";
 		rLen = 0;
-		rLoc = 9101;
+		rLoc = 9027;
 		rType = 0;
 		vrLen = 1553;
 		vrLoc = 8493;
@@ -756,9 +756,9 @@
 	};
 	3CF7D6530EE555120086D98C /* MainViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1404, 4103}}";
-			sepNavSelRange = "{9101, 0}";
-			sepNavVisRange = "{8493, 1553}";
+			sepNavIntBoundsRect = "{{0, 0}, {1224, 3960}}";
+			sepNavSelRange = "{11065, 0}";
+			sepNavVisRange = "{9771, 1977}";
 		};
 	};
 	3CF7D6540EE555120086D98C /* Word.h */ = {

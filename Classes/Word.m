@@ -17,6 +17,14 @@
   return word;
 }
 
+- (NSComparisonResult)compare:(Word *)aWord {
+  return [word compare:aWord.word];
+}
+
+- (BOOL)isEqual:(Word *)aWord {
+  return [word isEqual:aWord.word];
+}
+
 - (NSString *)letter {
   return [[word substringToIndex: 1] uppercaseString];
 }

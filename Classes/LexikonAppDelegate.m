@@ -121,6 +121,7 @@
 }
 
 - (void)addWordToDictionary:(NSMutableDictionary *)words word:(Word *)newWord andDatabase:(BOOL) andDatabase {
+  NSLog(@"in Add Word to Dictionary %d", andDatabase);
   // get a pointer to the array for the letter this word belongs to
   NSMutableArray *wordsForLetter = [words objectForKey:newWord.letter];
   // if we don't have an array set yet, create it.
@@ -137,14 +138,16 @@
     NSUInteger index = [wordsForLetter indexOfObject:newWord];
     if (index == NSNotFound) {
       // add the word to the array
-      [wordsForLetter addObject:newWord];      
+      [wordsForLetter addObject:newWord];
+      NSLog(@"new Word");
     }
     else {
       // this word was already in the wordList, update the word object
       [[wordsForLetter objectAtIndex:index] setTranslation:newWord.translation];
+      NSLog(@"update translation");
     }
   }
-
+  
   if (andDatabase) {
     // if we are adding to the database we need to sort the array since we aren't pulling out of the database alphabetically
     [wordsForLetter sortUsingSelector:@selector(compare:)];

@@ -199,11 +199,12 @@
   if (detailViewController == nil) {
     detailViewController = [[DetailViewController alloc] init];
   }
+
   
   detailViewController.word = word.word;
   detailViewController.html = [NSString stringWithContentsOfFile: [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"translationTemplate.html"]];
   detailViewController.html = [detailViewController.html stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
-
+  
   [self.navigationController pushViewController:detailViewController animated:YES];  
 }
 
@@ -343,7 +344,7 @@
       newWord.translation = translation;
 
       [appDelegate addWordToDictionary:appDelegate.currentWords word:newWord andDatabase:YES];
-
+      NSLog(@"added now show");
       [self viewWord:newWord];
     }
     else {
