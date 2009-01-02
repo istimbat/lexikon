@@ -3,7 +3,7 @@
 //  Lexikon
 //
 //  Created by Caleb Jaffa on 12/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008-2009 Caleb Jaffa, MIT licensed
 //
 
 #import <UIKit/UIKit.h>

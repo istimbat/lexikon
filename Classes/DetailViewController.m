@@ -3,7 +3,7 @@
 //  Lexikon
 //
 //  Created by Caleb Jaffa on 12/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008-2009 Caleb Jaffa, MIT licensed
 //
 
 #import "DetailViewController.h"
@@ -13,16 +13,14 @@
 @synthesize webView, word, html;
 
 - (void)loadView {
-  NSLog(@"loadView");
   webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
   self.view = webView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {  
-  NSLog(@"detail viewWillAppear");
   [super viewWillAppear:animated];
   self.title = word;
-  [webView loadHTMLString:html baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1/"]]];
+  [webView loadHTMLString:html baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1/%@", word]]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -40,7 +38,6 @@
 
 
 - (void)dealloc {
-  NSLog(@"dealloc detailViewController");
   [webView release];
   [word release];
   [html release];

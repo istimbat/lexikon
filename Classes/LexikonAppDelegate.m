@@ -3,7 +3,7 @@
 //  Lexikon
 //
 //  Created by Caleb Jaffa on 10/30/08.
-//  Copyright 2008 Caleb Jaffa, MIT licensed
+//  Copyright 2008-2009 Caleb Jaffa, MIT licensed
 //
 
 #import "LexikonAppDelegate.h"
