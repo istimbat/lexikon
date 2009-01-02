@@ -30,6 +30,7 @@
 }
 
 - (NSString *)translation {
+  NSLog(@"getting translation");
   if(translation == nil) {
     // lazy load the translation
     [self hydrate];
@@ -41,7 +42,7 @@
   NSLog(@"hydrating");
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   
-  translation = [appDelegate.database stringForQuery:@"SELECT translation FROM words WHERE word = ? AND lang = ?", word, [NSNumber numberWithInt:lang]];
+  self.translation = [appDelegate.database stringForQuery:@"SELECT translation FROM words WHERE word = ? AND lang = ?", word, [NSNumber numberWithInt:lang]];
   
   hydrated = YES;
 }

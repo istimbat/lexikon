@@ -19,9 +19,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {  
+  NSLog(@"detail viewWillAppear");
   [super viewWillAppear:animated];
   self.title = word;
-  [webView loadHTMLString:html baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1/%@", word]]];
+  [webView loadHTMLString:html baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1/"]]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [word release];
+  word = nil;
+  [html release];
+  html = nil;
 }
 
 - (void)didReceiveMemoryWarning {
