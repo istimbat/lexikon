@@ -350,18 +350,28 @@
       [self viewWord:newWord];
     }
     else {
-      translation = @"Word Not Found";
-      // display error message
+      // display error message that the word was not found
+      [self searchFailed:@"Word not found"];
     }
   }
   else {
-    translation = @"Error reaching lexikon website";
-    // display error message
+    // display error message alerting the user that we were not able to contact the Lexin website
+    [self searchFailed:[NSString stringWithFormat:@"%@ %@", [myError localizedDescription], [myError localizedFailureReason]]];
   }  
   
   // hide the activity indicator
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
   searchBar.text = @"";
+}
+
+- (void)searchFailed:(NSString *)message {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Search Error" 
+                                                  message:message
+                                                 delegate:nil 
+                                        cancelButtonTitle:@"OK" 
+                                        otherButtonTitles: nil];
+	[alert show];
+	[alert release];  
 }
 
 @end

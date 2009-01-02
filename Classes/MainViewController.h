@@ -29,6 +29,7 @@
 - (void)changeIndexLetters:(BOOL) swedish;
 
 - (void)viewWord:(Word *) word;
+- (void)searchFailed:(NSString *)message;
 
 - (void)hideIndex:(BOOL) hide;
 @end
