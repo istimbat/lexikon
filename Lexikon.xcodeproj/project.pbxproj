@@ -15,6 +15,7 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		3C0911FF0EDDA7AF00A982E9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0911FE0EDDA7AF00A982E9 /* libsqlite3.dylib */; };
 		3C3C29C60EE6DC0800028066 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C29C50EE6DC0800028066 /* Icon.png */; };
+		3C52BB490F0EB69D006C34C1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52BB480F0EB69D006C34C1 /* Default.png */; };
 		3C7E70890ED5F2B50022B3A9 /* database.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */; };
 		3CAD0D450EE7EFBB003C1C97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */; };
 		3CB9C87D0EED4674001753BD /* translationTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9C87C0EED4674001753BD /* translationTemplate.html */; };
@@ -38,6 +39,7 @@
 		32CA4F630368D1EE00C91783 /* Lexikon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexikon_Prefix.pch; sourceTree = "<group>"; };
 		3C0911FE0EDDA7AF00A982E9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3C3C29C50EE6DC0800028066 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		3C52BB480F0EB69D006C34C1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite3; sourceTree = "<group>"; };
 		3CAD0D430EE7EFBB003C1C97 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Classes/DetailViewController.h; sourceTree = "<group>"; };
 		3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Classes/DetailViewController.m; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3C52BB480F0EB69D006C34C1 /* Default.png */,
 				3CB9C87C0EED4674001753BD /* translationTemplate.html */,
 				3C3C29C50EE6DC0800028066 /* Icon.png */,
 				3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */,
@@ -209,6 +212,7 @@
 				3CF7D6510EE555030086D98C /* LICENSE.txt in Resources */,
 				3C3C29C60EE6DC0800028066 /* Icon.png in Resources */,
 				3CB9C87D0EED4674001753BD /* translationTemplate.html in Resources */,
+				3C52BB490F0EB69D006C34C1 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +268,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caleb Jaffa";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -292,7 +296,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -308,7 +312,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
