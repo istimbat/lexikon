@@ -6,9 +6,9 @@ This is an application for me, Caleb Jaffa, to learn more about iPhone developme
 
 ## Status
 
-The basic functionality works, before version 1.0 is pushed to the AppStore I'm going to add to and polish the user interface. Searching activity indicator, alert messages for failed searches, about view, save and load state of the application.
+The basic functionality works, before version 1.0 is pushed to the AppStore I'm going to add to and polish the user interface. Searching activity indicator, and save/load state of the application.
 
-For version 1.1 I want to refactor the model and controllers. There is too much model logic in the controllers. The plan is to use a class CJLexikonLanguage to handle the word list and other data for a language which will use a class much like the existing Word, but renamed CJWord. This should greatly simplify the LexikonAppDelegate and MainViewController. It will also help application launch times as it would ease lazy loading the word lists.
+For version 1.1 I want to refactor the model and controllers. There is too much model logic in the controllers. The plan is to use a class named CJLexikonLanguage to handle the word list and other data for a language which will use a class much like the existing Word, but renamed CJWord. This should greatly simplify the LexikonAppDelegate and MainViewController. It has a lot of immediate benefits and for the future if anyone wants another language supported.
 
 ## Code Contributions
 
