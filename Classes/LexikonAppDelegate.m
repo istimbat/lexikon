@@ -120,6 +120,7 @@
   if ([database executeUpdate:@"DELETE FROM words WHERE word = ? AND lang = ?", myWord.word, [NSNumber numberWithInt:myWord.lang]]) {
 #ifdef DEBUG      
     NSLog(@"Deleted word from database");
+    [database executeUpdate:@"VACUUM"]; // clean up the database
 #endif
   }
   else {

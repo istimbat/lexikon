@@ -13,4 +13,6 @@
   IBOutlet UIWebView *webView;
 }
 
+- (NSString *)stringFromFileSize:(int)theSize;
+
 @end
