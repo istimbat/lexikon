@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@class DetailViewController, Word;
+@class DetailViewController, Word, AboutViewController;
 
 @interface MainViewController : UITableViewController <UISearchBarDelegate> {
   IBOutlet UITableView *tableView;
@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *indexLetters;
 
 - (IBAction)switchLanguage:(id)sender;
+- (IBAction)showAbout:(id)sender;
 - (void)changeIndexLetters:(BOOL) swedish;
 
 - (void)viewWord:(Word *) word;

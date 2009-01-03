@@ -19,6 +19,10 @@
 		3C7E70890ED5F2B50022B3A9 /* database.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */; };
 		3CAD0D450EE7EFBB003C1C97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */; };
 		3CB9C87D0EED4674001753BD /* translationTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9C87C0EED4674001753BD /* translationTemplate.html */; };
+		3CDAEC670F0FECB2000A0C6E /* aboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC660F0FECB2000A0C6E /* aboutView.xib */; };
+		3CDAEC6A0F0FED5F000A0C6E /* clockwiseLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC690F0FED5F000A0C6E /* clockwiseLogo.png */; };
+		3CDAEC6C0F0FEE34000A0C6E /* aboutView.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC6B0F0FEE34000A0C6E /* aboutView.html */; };
+		3CDAEC6F0F0FEFD6000A0C6E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDAEC6E0F0FEFD6000A0C6E /* AboutViewController.m */; };
 		3CF7D64E0EE555030086D98C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D6480EE555030086D98C /* FMDatabase.m */; };
 		3CF7D64F0EE555030086D98C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D64A0EE555030086D98C /* FMDatabaseAdditions.m */; };
 		3CF7D6500EE555030086D98C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D64C0EE555030086D98C /* FMResultSet.m */; };
@@ -44,6 +48,11 @@
 		3CAD0D430EE7EFBB003C1C97 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Classes/DetailViewController.h; sourceTree = "<group>"; };
 		3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Classes/DetailViewController.m; sourceTree = "<group>"; };
 		3CB9C87C0EED4674001753BD /* translationTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = translationTemplate.html; sourceTree = "<group>"; };
+		3CDAEC660F0FECB2000A0C6E /* aboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = aboutView.xib; sourceTree = "<group>"; };
+		3CDAEC690F0FED5F000A0C6E /* clockwiseLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwiseLogo.png; sourceTree = "<group>"; };
+		3CDAEC6B0F0FEE34000A0C6E /* aboutView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutView.html; sourceTree = "<group>"; };
+		3CDAEC6D0F0FEFD6000A0C6E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		3CDAEC6E0F0FEFD6000A0C6E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3CF7D6470EE555030086D98C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Classes/FMDatabase.h; sourceTree = "<group>"; };
 		3CF7D6480EE555030086D98C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Classes/FMDatabase.m; sourceTree = "<group>"; };
 		3CF7D6490EE555030086D98C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = Classes/FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -114,6 +123,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3CDAEC6B0F0FEE34000A0C6E /* aboutView.html */,
+				3CDAEC660F0FECB2000A0C6E /* aboutView.xib */,
+				3CDAEC690F0FED5F000A0C6E /* clockwiseLogo.png */,
 				3C52BB480F0EB69D006C34C1 /* Default.png */,
 				3CB9C87C0EED4674001753BD /* translationTemplate.html */,
 				3C3C29C50EE6DC0800028066 /* Icon.png */,
@@ -161,6 +173,8 @@
 				3CF7D6550EE555120086D98C /* Word.m */,
 				1D3623240D0F684500981E51 /* LexikonAppDelegate.h */,
 				1D3623250D0F684500981E51 /* LexikonAppDelegate.m */,
+				3CDAEC6D0F0FEFD6000A0C6E /* AboutViewController.h */,
+				3CDAEC6E0F0FEFD6000A0C6E /* AboutViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -213,6 +227,9 @@
 				3C3C29C60EE6DC0800028066 /* Icon.png in Resources */,
 				3CB9C87D0EED4674001753BD /* translationTemplate.html in Resources */,
 				3C52BB490F0EB69D006C34C1 /* Default.png in Resources */,
+				3CDAEC670F0FECB2000A0C6E /* aboutView.xib in Resources */,
+				3CDAEC6A0F0FED5F000A0C6E /* clockwiseLogo.png in Resources */,
+				3CDAEC6C0F0FEE34000A0C6E /* aboutView.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +248,7 @@
 				3CF7D6560EE555120086D98C /* MainViewController.m in Sources */,
 				3CF7D6570EE555120086D98C /* Word.m in Sources */,
 				3CAD0D450EE7EFBB003C1C97 /* DetailViewController.m in Sources */,
+				3CDAEC6F0F0FEFD6000A0C6E /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +286,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caleb Jaffa";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -296,7 +314,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -312,7 +330,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

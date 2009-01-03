@@ -10,6 +10,7 @@
 #import "Word.h"
 #import "LexikonAppDelegate.h"
 #import "DetailViewController.h"
+#import "AboutViewController.h"
 
 @implementation MainViewController
 
@@ -70,11 +71,11 @@
   [self.tableView reloadData];    
 }
 
-- (void)showAbout {
-//  UIViewController *targetViewController = [[menuList objectAtIndex: indexPath.row] objectForKey:kViewControllerKey];
-//	if (targetViewController == nil)
-//
-//  [[self navigationController] pushViewController:targetViewController animated:YES];
+- (IBAction)showAbout:(id)sender {
+  AboutViewController *aboutViewController = [[AboutViewController alloc] initWithNibName:@"aboutView" bundle:nil];
+  [[self navigationController] pushViewController:aboutViewController animated: YES];
+  self.navigationController.navigationBarHidden = NO;
+  [aboutViewController release];
 }
 
 
@@ -207,7 +208,8 @@
 //  NSLog(@"%@", word.translation);
 //  detailViewController.html = [detailViewController.html stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
   
-  [self.navigationController pushViewController:detailViewController animated:YES];  
+  [self.navigationController pushViewController:detailViewController animated:YES];
+  self.navigationItem.leftBarButtonItem.title = @"Back";
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -263,9 +265,11 @@
 
 - (void)hideIndex:(BOOL) hide {
   CGFloat factor = (hide) ? 30.0 : -30.0;
-  
+
+#ifdef DEBUG        
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   NSLog(@"# of word arrays %d", [appDelegate.currentWords count]);
+#endif
   UIBarButtonItem *buttonItem;
   
   // change the About button to a done button
@@ -275,7 +279,7 @@
   }
   else {
     tableView.sectionIndexMinimumDisplayRowCount = 1;
-    buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAbout)];
+    buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAbout:)];
   }
   self.navigationItem.rightBarButtonItem = buttonItem;
   
@@ -301,7 +305,9 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+#ifdef DEBUG        
   NSLog(@"searching button clicked %@", searchBar);
+#endif
   [searchBar resignFirstResponder];
   
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -336,8 +342,9 @@
       NSRange myRange;
       myRange.location = start.location;
       myRange.length = end.location - start.location;
+#ifdef DEBUG      
       NSLog(@"start: %d end: %d", start.location, end.location);
-      
+#endif      
       translation = [translation substringWithRange: myRange];
 
       Word *newWord = [[Word alloc] init];
@@ -346,7 +353,9 @@
       newWord.translation = translation;
 
       [appDelegate addWordToDictionary:appDelegate.currentWords word:newWord andDatabase:YES];
+#ifdef DEBUG      
       NSLog(@"added now show");
+#endif
       [self viewWord:newWord];
     }
     else {
@@ -356,7 +365,8 @@
   }
   else {
     // display error message alerting the user that we were not able to contact the Lexin website
-    [self searchFailed:[NSString stringWithFormat:@"%@ %@", [myError localizedDescription], [myError localizedFailureReason]]];
+    [self searchFailed:@"Unable to reach the Lexin website"];
+    //[NSString stringWithFormat:@"%@ %@", [myError localizedDescription], [myError localizedFailureReason]]];
   }  
   
   // hide the activity indicator
