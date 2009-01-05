@@ -18,6 +18,7 @@
   NSMutableDictionary *currentWords;
   NSMutableDictionary *englishWords;
   NSMutableDictionary *swedishWords;
+  NSString *currentWord;
   BOOL swedishToEnglish;
 
   FMDatabase *database;  
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) NSMutableDictionary *currentWords;
 @property (nonatomic, retain) NSMutableDictionary *englishWords;
 @property (nonatomic, retain) NSMutableDictionary *swedishWords;
+@property (nonatomic, retain) NSString *currentWord;
 
 @property (assign) BOOL swedishToEnglish;
 

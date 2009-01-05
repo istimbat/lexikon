@@ -7,6 +7,7 @@
 //
 
 #import "LexikonAppDelegate.h"
+#import "MainViewController.h"
 #import "FMDatabase.h"
 
 @class Word;
@@ -19,7 +20,7 @@
 
 @implementation LexikonAppDelegate
 
-@synthesize window, navigationController, database, currentWords, englishWords, swedishWords, swedishToEnglish;
+@synthesize window, navigationController, database, currentWords, englishWords, swedishWords, swedishToEnglish, currentWord;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   [window addSubview:navigationController.view];
@@ -32,11 +33,30 @@
 //  [self initializeWords:self.englishWords language:ENG_LANGUAGE];
 //  [self initializeWords:self.swedishWords language:SWE_LANGUAGE];
   
-  // default state of Swedish to English
-  // TODO: change this to be saved via NSCoding to save state of the app
-  // for now this will lazy load the Swedish words first
-  self.swedishToEnglish = NO;
+  // Load the swedishToEnglish value, ! it and call toggleSwedishToEnglish to load the first word list
+  self.swedishToEnglish = ! [[NSUserDefaults standardUserDefaults] boolForKey:@"swedishToEnglish"];
   [self toggleSwedishToEnglish];
+
+  // if word != nil load it
+  NSString *savedWord = [[NSUserDefaults standardUserDefaults] stringForKey:@"word"];
+  NSLog(@"saved word: %@", savedWord);
+  if (savedWord != nil) {
+    // send the user to the word they were looking at
+    for (NSString *letter in currentWords) {
+      for (Word *aWord in [currentWords objectForKey:letter]) {
+        if ([aWord.word isEqual:savedWord]) {
+          [(MainViewController*)navigationController.topViewController viewWord:aWord];          
+        }
+      }
+    }
+  }
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+	// save user state
+	[[NSUserDefaults standardUserDefaults] setBool:swedishToEnglish forKey:@"swedishToEnglish"];
+  [[NSUserDefaults standardUserDefaults] setObject:currentWord forKey:@"word"];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -76,6 +96,7 @@
   [currentWords release];
   [englishWords release];
   [swedishWords release];
+  [currentWord release];
   [super dealloc];
 }
 

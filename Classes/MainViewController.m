@@ -36,6 +36,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [self.tableView reloadData];
+
+  // update the app delegate that we are no longer viewing a specific word
+  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
+  appDelegate.currentWord = nil;
 }
 
 - (void)changeIndexLetters:(BOOL) swedish {
@@ -48,9 +52,11 @@
     [self.indexLetters addObject: @"Å"];
     [self.indexLetters addObject: @"Ä"];
     [self.indexLetters addObject: @"Ö"];
+    languageSwitcherButton.title = @"Swe to Eng";
   }
   else {
     [self.indexLetters removeObjectsInArray: [NSArray arrayWithObjects: @"Å", @"Ä", @"Ö", nil]];
+    languageSwitcherButton.title = @"Eng to Swe";
   }
 }
 
@@ -58,14 +64,7 @@
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   
   BOOL swedish = [appDelegate toggleSwedishToEnglish];
-  
-  if(swedish) {
-    languageSwitcherButton.title = @"Swe to Eng";
-  }
-  else {
-    languageSwitcherButton.title = @"Eng to Swe";
-  }
-  
+    
   [self changeIndexLetters: swedish];
   
   [self.tableView reloadData];    
@@ -201,15 +200,16 @@
     detailViewController = [[DetailViewController alloc] init];
   }
   
+  // update the app delegate with what word we are viewing
+  LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
+  appDelegate.currentWord = word.word;  
+  
   detailViewController.word = word.word;
   detailViewController.html = [[NSString stringWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] 
                                                                    stringByAppendingPathComponent:@"translationTemplate.html"]]
                                stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
-//  NSLog(@"%@", word.translation);
-//  detailViewController.html = [detailViewController.html stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
   
   [self.navigationController pushViewController:detailViewController animated:YES];
-  self.navigationItem.leftBarButtonItem.title = @"Back";
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
