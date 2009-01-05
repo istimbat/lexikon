@@ -30,8 +30,6 @@
 - (void)awakeFromNib {
   [self createEditableCopyOfDatabaseIfNeeded];
   [self initializeDatabase];
-//  [self initializeWords:self.englishWords language:ENG_LANGUAGE];
-//  [self initializeWords:self.swedishWords language:SWE_LANGUAGE];
   
   // Load the swedishToEnglish value, ! it and call toggleSwedishToEnglish to load the first word list
   self.swedishToEnglish = ! [[NSUserDefaults standardUserDefaults] boolForKey:@"swedishToEnglish"];
@@ -39,7 +37,6 @@
 
   // if word != nil load it
   NSString *savedWord = [[NSUserDefaults standardUserDefaults] stringForKey:@"word"];
-  NSLog(@"saved word: %@", savedWord);
   if (savedWord != nil) {
     // send the user to the word they were looking at
     for (NSString *letter in currentWords) {
@@ -63,11 +60,20 @@
 #ifdef DEBUG      
   NSLog(@"MEMORY WARNING");
 #endif
+  // dehydrate each word's translation from memory
   for (NSString *letter in swedishWords) {
     [[swedishWords objectForKey:letter] makeObjectsPerformSelector:@selector(dehydrate)];
   }
   for (NSString *letter in englishWords) {
     [[englishWords objectForKey:letter] makeObjectsPerformSelector:@selector(dehydrate)];
+  }
+  
+  // unload the word list not in play
+  if (self.swedishToEnglish) {
+    self.englishWords = nil;
+  }
+  else {
+    self.swedishWords = nil;
   }
 }
 

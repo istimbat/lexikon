@@ -34,6 +34,11 @@
   [super dealloc];
 }
 
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   [self.tableView reloadData];
 
@@ -208,7 +213,7 @@
   detailViewController.html = [[NSString stringWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] 
                                                                    stringByAppendingPathComponent:@"translationTemplate.html"]]
                                stringByReplacingOccurrencesOfString:@"{yield}" withString:word.translation];
-  
+
   [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
