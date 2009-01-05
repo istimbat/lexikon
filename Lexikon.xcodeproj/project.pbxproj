@@ -19,6 +19,9 @@
 		3C7E70890ED5F2B50022B3A9 /* database.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */; };
 		3CAD0D450EE7EFBB003C1C97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */; };
 		3CB9C87D0EED4674001753BD /* translationTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CB9C87C0EED4674001753BD /* translationTemplate.html */; };
+		3CD1B3300F12754A000D44AD /* libPMAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1B32F0F12754A000D44AD /* libPMAnalytics.a */; };
+		3CD1B33E0F128B96000D44AD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1B33D0F128B96000D44AD /* CoreLocation.framework */; };
+		3CD1B3420F128BA2000D44AD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD1B3410F128BA2000D44AD /* SystemConfiguration.framework */; };
 		3CDAEC670F0FECB2000A0C6E /* aboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC660F0FECB2000A0C6E /* aboutView.xib */; };
 		3CDAEC6A0F0FED5F000A0C6E /* clockwiseLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC690F0FED5F000A0C6E /* clockwiseLogo.png */; };
 		3CDAEC6C0F0FEE34000A0C6E /* aboutView.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEC6B0F0FEE34000A0C6E /* aboutView.html */; };
@@ -49,6 +52,10 @@
 		3CAD0D430EE7EFBB003C1C97 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Classes/DetailViewController.h; sourceTree = "<group>"; };
 		3CAD0D440EE7EFBB003C1C97 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Classes/DetailViewController.m; sourceTree = "<group>"; };
 		3CB9C87C0EED4674001753BD /* translationTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = translationTemplate.html; sourceTree = "<group>"; };
+		3CD1B32E0F12754A000D44AD /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beacon.h; sourceTree = "<group>"; };
+		3CD1B32F0F12754A000D44AD /* libPMAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPMAnalytics.a; path = "Pinch Analytics/libPMAnalytics.a"; sourceTree = "<group>"; };
+		3CD1B33D0F128B96000D44AD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3CD1B3410F128BA2000D44AD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3CDAEC660F0FECB2000A0C6E /* aboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = aboutView.xib; sourceTree = "<group>"; };
 		3CDAEC690F0FED5F000A0C6E /* clockwiseLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwiseLogo.png; sourceTree = "<group>"; };
 		3CDAEC6B0F0FEE34000A0C6E /* aboutView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutView.html; sourceTree = "<group>"; };
@@ -78,6 +85,9 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				3C0911FF0EDDA7AF00A982E9 /* libsqlite3.dylib in Frameworks */,
+				3CD1B3300F12754A000D44AD /* libPMAnalytics.a in Frameworks */,
+				3CD1B33E0F128B96000D44AD /* CoreLocation.framework in Frameworks */,
+				3CD1B3420F128BA2000D44AD /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +119,8 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				3CD1B33D0F128B96000D44AD /* CoreLocation.framework */,
+				3CD1B3410F128BA2000D44AD /* SystemConfiguration.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -139,6 +151,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CD1B32F0F12754A000D44AD /* libPMAnalytics.a */,
 				3C0911FE0EDDA7AF00A982E9 /* libsqlite3.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -161,6 +174,14 @@
 			name = fmdb;
 			sourceTree = "<group>";
 		};
+		3CD1B32D0F12754A000D44AD /* Pinch Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				3CD1B32E0F12754A000D44AD /* Beacon.h */,
+			);
+			path = "Pinch Analytics";
+			sourceTree = "<group>";
+		};
 		3CDAEDE00F1029F1000A0C6E /* HTML */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +196,7 @@
 		3CE4FBC90EB9FED10088EBD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3CD1B32D0F12754A000D44AD /* Pinch Analytics */,
 				3C0910F70EDCB7E700A982E9 /* fmdb */,
 				3CF7D6520EE555120086D98C /* MainViewController.h */,
 				3CF7D6530EE555120086D98C /* MainViewController.m */,
@@ -277,6 +299,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Lexikon_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pinch Analytics\"",
+				);
 				PRODUCT_NAME = Lexikon;
 			};
 			name = Debug;
@@ -289,6 +315,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Lexikon_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pinch Analytics\"",
+				);
 				PRODUCT_NAME = Lexikon;
 			};
 			name = Release;
@@ -298,7 +328,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caleb Jaffa";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -317,6 +347,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Lexikon_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pinch Analytics\"",
+				);
 				PRODUCT_NAME = Lexikon;
 			};
 			name = Distribution;
@@ -326,7 +360,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -342,7 +376,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

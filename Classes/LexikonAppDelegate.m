@@ -9,6 +9,7 @@
 #import "LexikonAppDelegate.h"
 #import "MainViewController.h"
 #import "FMDatabase.h"
+#import "Beacon.h"
 
 @class Word;
 
@@ -25,6 +26,8 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   [window addSubview:navigationController.view];
   [window makeKeyAndVisible];
+  
+  [Beacon initAndStartBeaconWithApplicationCode:APPLICATION_CODE useCoreLocation:YES useOnlyWiFi:NO];
 }
 
 - (void)awakeFromNib {
@@ -54,6 +57,9 @@
 	// save user state
 	[[NSUserDefaults standardUserDefaults] setBool:swedishToEnglish forKey:@"swedishToEnglish"];
   [[NSUserDefaults standardUserDefaults] setObject:currentWord forKey:@"word"];
+  
+  // stop the analytics
+  [[Beacon shared] endBeacon];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

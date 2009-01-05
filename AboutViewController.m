@@ -28,7 +28,6 @@
   NSString *documentsDirectory = [paths objectAtIndex:0];
   NSString *DBPath = [documentsDirectory stringByAppendingPathComponent:@"database.sqlite3"];
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSLog(@"%@", DBPath);
   NSDictionary *database = [fileManager fileAttributesAtPath:DBPath traverseLink:YES];
   NSString *filesize = [self stringFromFileSize:[database fileSize]];
   
