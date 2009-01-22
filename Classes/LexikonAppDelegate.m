@@ -27,7 +27,7 @@
   [window addSubview:navigationController.view];
   [window makeKeyAndVisible];
   
-  [Beacon initAndStartBeaconWithApplicationCode:APPLICATION_CODE useCoreLocation:YES useOnlyWiFi:NO];
+  [Beacon initAndStartBeaconWithApplicationCode:APPLICATION_CODE useCoreLocation:NO useOnlyWiFi:NO];
 }
 
 - (void)awakeFromNib {
