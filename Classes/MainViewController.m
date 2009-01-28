@@ -86,29 +86,23 @@
 #pragma mark TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if(section == 0) {
-//    NSLog(@"-numberOfRowsInSection: %d 1", section);
-    return 1; // return 1 for section 0 and MAX all other will be dynamic 
+    return 1; // return 1 for section 0 all other will be dynamic 
   }
   else {
     // we need to get at properties in our app delegate
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
-    //NSLog(@"%@", self.indexLetters);
     NSString *sectionLetter = [self.indexLetters objectAtIndex:section];
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
-
-//    NSLog(@"numberOfRowsInSection: %d %@ %d", section, sectionLetter, [wordsForSection count]);
 
     return [wordsForSection count];
   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//  NSLog(@"# of sections %d", [self.indexLetters count]);
   return [self.indexLetters count];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-//  NSLog(@"indexTitlesForTableView %d", [self.indexLetters count]);
   return self.indexLetters;
 }
 
@@ -292,20 +286,29 @@
   
   // setup the animation
   [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.4];
+  [UIView setAnimationDuration:0.3];
   
   // change the UISearchBar's size
   mySearchBar.frame = CGRectMake(mySearchBar.frame.origin.x, 
                                  mySearchBar.frame.origin.y, 
                                  mySearchBar.frame.size.width + factor, 
                                  mySearchBar.frame.size.height);  
-
+  for ( UIView *view in mySearchBar.subviews) {
+    if ([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+      view.frame = CGRectMake(view.frame.origin.x, 
+                              view.frame.origin.y, 
+                              view.frame.size.width + factor, 
+                              view.frame.size.height);
+    }
+  }
+  
   // move the index out of the way
   for ( UIView *view in tableView.subviews ) {
     if ([view isKindOfClass:NSClassFromString(@"UITableViewIndex")]) {
       view.center = CGPointMake(view.center.x + factor, view.center.y);
     }
   }
+//  [tableView setIndexHidden:hide animated:NO];
   [UIView commitAnimations];
 }
 
