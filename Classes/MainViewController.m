@@ -269,7 +269,7 @@
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   NSLog(@"# of word arrays %d", [appDelegate.currentWords count]);
 #endif
-  UIBarButtonItem *buttonItem;
+  UIBarButtonItem *buttonItem;  
   
   // change the About button to a done button
   if (hide) {
@@ -280,19 +280,19 @@
     tableView.sectionIndexMinimumDisplayRowCount = 1;
     buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAbout:)];
   }
-  self.navigationItem.rightBarButtonItem = buttonItem;
-  
+  [self.navigationItem setRightBarButtonItem: buttonItem animated:YES];
   [buttonItem release];
   
   // setup the animation
   [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.3];
+  [UIView setAnimationDuration:0.2];  
   
-  // change the UISearchBar's size
   mySearchBar.frame = CGRectMake(mySearchBar.frame.origin.x, 
                                  mySearchBar.frame.origin.y, 
                                  mySearchBar.frame.size.width + factor, 
-                                 mySearchBar.frame.size.height);  
+                                 mySearchBar.frame.size.height); 
+
+  // change the UISearchBar's size
   for ( UIView *view in mySearchBar.subviews) {
     if ([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
       view.frame = CGRectMake(view.frame.origin.x, 
