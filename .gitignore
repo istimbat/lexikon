@@ -1,2 +1,7 @@
-build/
+build/*
+*.pbxuser
+*.mode1v3
 Beacon.h
+
+.DS_Store
+profile
