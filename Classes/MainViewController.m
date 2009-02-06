@@ -257,7 +257,7 @@
   [tableView reloadData];
 }
 
-- (void)doneSearching {
+- (void)cancelSearching {
   self.mySearchBar.text = @"";
   [self.mySearchBar resignFirstResponder];
 }
@@ -271,10 +271,10 @@
 #endif
   UIBarButtonItem *buttonItem;  
   
-  // change the About button to a done button
+  // change the About button to a cancel button
   if (hide) {
     tableView.sectionIndexMinimumDisplayRowCount = NSIntegerMax;
-    buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneSearching)];
+    buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSearching)];
   }
   else {
     tableView.sectionIndexMinimumDisplayRowCount = 1;
