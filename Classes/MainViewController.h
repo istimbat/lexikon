@@ -16,6 +16,7 @@
   IBOutlet UIBarButtonItem *languageSwitcherButton;
   UISearchBar *mySearchBar;
   DetailViewController *detailViewController;
+  UIButton *cancelSearchTableCover;
   
   NSMutableArray *indexLetters;
   BOOL searching;

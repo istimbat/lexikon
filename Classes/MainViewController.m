@@ -31,6 +31,7 @@
   NSLog(@"dealloc");
   [mySearchBar release];
   [detailViewController release];
+  [cancelSearchTableCover release];
   [super dealloc];
 }
 
@@ -81,7 +82,6 @@
   self.navigationController.navigationBarHidden = NO;
   [aboutViewController release];
 }
-
 
 #pragma mark TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -152,8 +152,9 @@
       UISearchBar *aSearchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
       [aSearchBar setTintColor: [UIColor colorWithRed:0.769 green:0.80 blue:0.824 alpha:1.0]];
       [aSearchBar sizeToFit];
-//      aSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+      aSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
       aSearchBar.delegate = self;
+      aSearchBar.placeholder = @"Search";
 
       aSearchBar.frame = CGRectMake(0, 0, 290, 44);
       [cell.contentView addSubview:aSearchBar];
@@ -283,9 +284,22 @@
   [self.navigationItem setRightBarButtonItem: buttonItem animated:YES];
   [buttonItem release];
   
+  if (cancelSearchTableCover == nil) {
+    cancelSearchTableCover = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelSearchTableCover addTarget:self action:@selector(cancelSearching) forControlEvents:UIControlEventTouchDown];
+    cancelSearchTableCover.backgroundColor = [UIColor blackColor];
+    cancelSearchTableCover.alpha = 0.0f;
+    cancelSearchTableCover.frame = CGRectMake(0, 44, 320, 320);
+    [tableView addSubview:cancelSearchTableCover];
+  }  
+  
+  
   // setup the animation
   [UIView beginAnimations:nil context:nil];
-  [UIView setAnimationDuration:0.2];  
+  [UIView setAnimationDuration:0.2];
+
+  // fade in and out the cancel search button
+  cancelSearchTableCover.alpha = (hide) ? 0.8f : 0.0f;
   
   mySearchBar.frame = CGRectMake(mySearchBar.frame.origin.x, 
                                  mySearchBar.frame.origin.y, 
