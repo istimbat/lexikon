@@ -15,8 +15,7 @@
 
 @implementation MainViewController
 
-@synthesize tableView, indexLetters, mySearchBar,
-suggestionsController;
+@synthesize tableView, indexLetters, mySearchBar, suggestionsController;
 
 - (void)awakeFromNib {
   // we need to get at properties of our application delegate
@@ -314,12 +313,16 @@ suggestionsController;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
   if (suggestionsController == nil) {
     suggestionsController = [[SearchSuggestionsController alloc] initWithNibName:@"SearchSuggestions" bundle:nil];
-    suggestionsController.view.alpha = 0.0f;
+    suggestionsController.view.alpha = 1.0f;
     suggestionsController.main = self;
+    suggestionsController.view.frame = CGRectMake(suggestionsController.view.frame.origin.x,
+                                             suggestionsController.view.frame.origin.y+88,
+                                             suggestionsController.view.frame.size.width,
+                                             suggestionsController.view.frame.size.height);
     [self.navigationController.view addSubview:suggestionsController.view];
   }
   
-  [self showOverlays:YES];
+//  [self showOverlays:YES];
   
   if (searchBar.text.length > 0) {    
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -334,6 +337,7 @@ suggestionsController;
         }
       }
     }
+
     suggestionsController.suggestions = suggestions;
     [suggestionsController.tableView reloadData];
   }

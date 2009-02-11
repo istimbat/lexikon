@@ -30,7 +30,7 @@
 		3CDAEDDE0F1029EB000A0C6E /* lexikonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDAEDDD0F1029EB000A0C6E /* lexikonIcon.png */; };
 		3CEE1E580F3F8284000AE3F6 /* SearchSuggestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEE1E570F3F8284000AE3F6 /* SearchSuggestionsController.m */; };
 		3CEE1E5C0F3F837D000AE3F6 /* SearchSuggestions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEE1E5B0F3F837D000AE3F6 /* SearchSuggestions.xib */; };
-		3CEE1E7A0F404D99000AE3F6 /* searchSuggestionsDropDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropDown.png */; };
+		3CEE1E7A0F404D99000AE3F6 /* searchSuggestionsDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropShadow.png */; };
 		3CF7D64E0EE555030086D98C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D6480EE555030086D98C /* FMDatabase.m */; };
 		3CF7D64F0EE555030086D98C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D64A0EE555030086D98C /* FMDatabaseAdditions.m */; };
 		3CF7D6500EE555030086D98C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7D64C0EE555030086D98C /* FMResultSet.m */; };
@@ -69,7 +69,7 @@
 		3CEE1E560F3F8284000AE3F6 /* SearchSuggestionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSuggestionsController.h; sourceTree = "<group>"; };
 		3CEE1E570F3F8284000AE3F6 /* SearchSuggestionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSuggestionsController.m; sourceTree = "<group>"; };
 		3CEE1E5B0F3F837D000AE3F6 /* SearchSuggestions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSuggestions.xib; sourceTree = "<group>"; };
-		3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchSuggestionsDropDown.png; sourceTree = "<group>"; };
+		3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchSuggestionsDropShadow.png; sourceTree = "<group>"; };
 		3CF7D6470EE555030086D98C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Classes/FMDatabase.h; sourceTree = "<group>"; };
 		3CF7D6480EE555030086D98C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Classes/FMDatabase.m; sourceTree = "<group>"; };
 		3CF7D6490EE555030086D98C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = Classes/FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				3CDAEDE00F1029F1000A0C6E /* HTML */,
 				3C52BB480F0EB69D006C34C1 /* Default.png */,
 				3C3C29C50EE6DC0800028066 /* Icon.png */,
-				3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropDown.png */,
+				3CEE1E790F404D99000AE3F6 /* searchSuggestionsDropShadow.png */,
 				3C7E70880ED5F2B50022B3A9 /* database.sqlite3 */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
@@ -276,7 +276,7 @@
 				3CDAEC6C0F0FEE34000A0C6E /* aboutView.html in Resources */,
 				3CDAEDDE0F1029EB000A0C6E /* lexikonIcon.png in Resources */,
 				3CEE1E5C0F3F837D000AE3F6 /* SearchSuggestions.xib in Resources */,
-				3CEE1E7A0F404D99000AE3F6 /* searchSuggestionsDropDown.png in Resources */,
+				3CEE1E7A0F404D99000AE3F6 /* searchSuggestionsDropShadow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +342,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Caleb Jaffa";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -374,7 +374,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG = 1;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -391,7 +391,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

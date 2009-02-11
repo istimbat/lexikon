@@ -12,12 +12,7 @@
 
 @implementation SearchSuggestionsController
 
-@synthesize tableView, suggestions, main;
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-}
-
+@synthesize tableView, suggestions, main, dropDownShadow;
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -29,7 +24,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
 }
-
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
