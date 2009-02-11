@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "SearchSuggestionsController.h"
 
 @class DetailViewController, Word, AboutViewController;
 
@@ -17,6 +18,9 @@
   UISearchBar *mySearchBar;
   DetailViewController *detailViewController;
   UIButton *cancelSearchTableCover;
+//  UIView *suggestionsView;
+  SearchSuggestionsController *suggestionsController;
+//  UIImageView *dropShadow;
   
   NSMutableArray *indexLetters;
   BOOL searching;
@@ -25,6 +29,9 @@
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) UISearchBar *mySearchBar;
 @property (nonatomic, retain) NSMutableArray *indexLetters;
+//@property (nonatomic, retain) UIView *suggestionsView;
+@property (nonatomic, retain) SearchSuggestionsController *suggestionsController;
+//@property (nonatomic, retain) UIImageView *dropShadow;
 
 - (IBAction)switchLanguage:(id)sender;
 - (IBAction)showAbout:(id)sender;
@@ -32,6 +39,7 @@
 
 - (void)viewWord:(Word *) word;
 - (void)searchFailed:(NSString *)message;
+- (void)shiftOverlaysOff:(BOOL) shiftOff;
 
 - (void)hideIndex:(BOOL) hide;
 @end

@@ -45,7 +45,7 @@
     for (NSString *letter in currentWords) {
       for (Word *aWord in [currentWords objectForKey:letter]) {
         if ([aWord.word isEqual:savedWord]) {
-          [(MainViewController*)navigationController.topViewController viewWord:aWord];          
+          [(MainViewController*)navigationController.topViewController viewWord:aWord];
         }
       }
     }
