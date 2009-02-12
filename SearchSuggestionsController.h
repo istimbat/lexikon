@@ -12,11 +12,13 @@
 
 @interface SearchSuggestionsController : UIViewController {
   IBOutlet UITableView *tableView;
+  IBOutlet UIImageView *dropDownShadow;
   NSMutableArray *suggestions;
   MainViewController *main;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) UIImageView *dropDownShadow;
 @property (nonatomic, retain) NSMutableArray *suggestions;
 @property (nonatomic, retain) MainViewController *main;
 

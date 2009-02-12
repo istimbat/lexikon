@@ -330,7 +330,7 @@
     [self.navigationController.view addSubview:suggestionsController.view];
   }
   
-  [self showOverlays:YES];
+//  [self showOverlays:YES];
   
   if (searchBar.text.length > 0) {    
     LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
