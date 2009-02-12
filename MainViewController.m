@@ -31,6 +31,9 @@
 - (void)dealloc {
   [mySearchBar release];
   [detailViewController release];
+  [indexLetters release];
+  [tableView release];
+  [suggestionsController release];
   [super dealloc];
 }
 
@@ -82,6 +85,11 @@
   BOOL swedish = [appDelegate toggleSwedishToEnglish];
   
   [self changeIndexLetters: swedish];
+  
+  // if we are searching we might need to update the suggestions/filter list
+  if (searching) {
+    [self searchBar:mySearchBar textDidChange:mySearchBar.text];
+  }
   
   [self.tableView reloadData];    
 }
@@ -302,7 +310,6 @@
       suggestionsController.view.alpha = 1.0f;
     }
     else {
-      NSLog(@"search 0");
       suggestionsController.view.alpha = 0.0f;
       cancelSearchTableCover.alpha = 0.8f;
     }
@@ -340,6 +347,7 @@
     }
 
     suggestionsController.suggestions = suggestions;
+    [suggestions release];
     [suggestionsController.tableView reloadData];
   }
 }
@@ -418,7 +426,7 @@
   LexikonAppDelegate *appDelegate = (LexikonAppDelegate *)[[UIApplication sharedApplication] delegate];
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
   
-  NSString *word = [[searchBar.text copy] capitalizedString];
+  NSString *searchWord = [searchBar.text capitalizedString];
   NSString *translationString;
   NSString *translation;
   NSURL *translationURL;
@@ -428,11 +436,11 @@
   [self cancelSearching];
 
   if(appDelegate.swedishToEnglish) {
-    translationString = [[NSString stringWithFormat:@"http://lexin.nada.kth.se/Lexin/?dict=sve-eng&lang=source&word=%@", word] stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    translationString = [[NSString stringWithFormat:@"http://lexin.nada.kth.se/Lexin/?dict=sve-eng&lang=source&word=%@", searchWord] stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     encoding = NSUTF8StringEncoding;
   }
   else {
-    translationString = [[NSString stringWithFormat:@"http://lexin.nada.kth.se/cgi-bin/sve-eng?:%@", word] stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    translationString = [[NSString stringWithFormat:@"http://lexin.nada.kth.se/cgi-bin/sve-eng?:%@", searchWord] stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     encoding = NSISOLatin1StringEncoding;
   }
 
@@ -453,7 +461,7 @@
       translation = [translation substringWithRange: myRange];
       
       Word *newWord = [[Word alloc] init];
-      newWord.word = word;
+      newWord.word = searchWord;
       newWord.lang = (appDelegate.swedishToEnglish) ? SWE_LANGUAGE : ENG_LANGUAGE;
       newWord.translation = translation;
       
@@ -463,7 +471,7 @@
     }
     else {
       // display error message that the word was not found
-      [self searchFailed:[NSString stringWithFormat:@"%@ not found", word]];
+      [self searchFailed:[NSString stringWithFormat:@"%@ not found", searchWord]];
     }
   }
   else {
@@ -474,6 +482,8 @@
   
   // hide the activity indicator
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+  //[searchWord release];
+  searchWord = nil;
 }
 
 - (void)searchFailed:(NSString *)message {

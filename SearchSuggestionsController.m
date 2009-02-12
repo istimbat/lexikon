@@ -12,7 +12,7 @@
 
 @implementation SearchSuggestionsController
 
-@synthesize tableView, suggestions, main, dropDownShadow;
+@synthesize tableView, suggestions, main;
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -53,7 +53,10 @@
 }
 
 - (void)dealloc {
-    [super dealloc];
+  [main release];
+  [suggestions release];
+  [tableView release];
+  [super dealloc];
 }
 
 

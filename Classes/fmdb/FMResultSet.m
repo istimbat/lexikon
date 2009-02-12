@@ -18,16 +18,6 @@
     return [rs autorelease];
 }
 
-- (id)init {
-	self = [super init];
-    if (self) {
-        [self setColumnNameToIndexMap:[NSMutableDictionary dictionary]];
-    }
-	
-	return self;
-}
-
-
 - (void)dealloc {
     [self close];
     
@@ -46,11 +36,16 @@
     [statement release];
     statement = nil;
     
-    [parentDB setInUse:NO];
-    parentDB = nil; // parentDB is never retained, so no need for a release.
+    // we don't need this anymore... (i think)
+    //[parentDB setInUse:NO];
+    parentDB = nil;
 }
 
 - (void) setupColumnNames {
+    
+    if (!columnNameToIndexMap) {
+        [self setColumnNameToIndexMap:[NSMutableDictionary dictionary]];
+    }	
     
     int columnCount = sqlite3_column_count(statement.statement);
     
@@ -184,10 +179,29 @@
         return 0;
     }
     
-    return sqlite3_column_int64(statement.statement, columnIdx);
+    return (long)sqlite3_column_int64(statement.statement, columnIdx);
 }
 
 - (long) longForColumnIndex:(int)columnIdx {
+    return (long)sqlite3_column_int64(statement.statement, columnIdx);
+}
+
+- (long long int) longLongIntForColumn:(NSString*)columnName {
+    
+    if (!columnNamesSetup) {
+        [self setupColumnNames];
+    }
+    
+    int columnIdx = [self columnIndexForName:columnName];
+    
+    if (columnIdx == -1) {
+        return 0;
+    }
+    
+    return sqlite3_column_int64(statement.statement, columnIdx);
+}
+
+- (long long int) longLongIntForColumnIndex:(int)columnIdx {
     return sqlite3_column_int64(statement.statement, columnIdx);
 }
 
@@ -283,13 +297,8 @@
         return nil;
     }
     
-    int dataSize = sqlite3_column_bytes(statement.statement, columnIdx);
     
-    NSMutableData *data = [NSMutableData dataWithLength:dataSize];
-    
-    memcpy([data mutableBytes], sqlite3_column_blob(statement.statement, columnIdx), dataSize);
-    
-    return data;
+    return [self dataForColumnIndex:columnIdx];
 }
 
 - (NSData*) dataForColumnIndex:(int)columnIdx {
@@ -302,6 +311,35 @@
     
     return data;
 }
+
+
+- (NSData*) dataNoCopyForColumn:(NSString*)columnName {
+    
+    if (!columnNamesSetup) {
+        [self setupColumnNames];
+    }
+    
+    int columnIdx = [self columnIndexForName:columnName];
+    
+    if (columnIdx == -1) {
+        return nil;
+    }
+    
+    
+    return [self dataNoCopyForColumnIndex:columnIdx];
+}
+
+- (NSData*) dataNoCopyForColumnIndex:(int)columnIdx {
+    
+    int dataSize = sqlite3_column_bytes(statement.statement, columnIdx);
+    
+    NSData *data = [NSData dataWithBytesNoCopy:(void *)sqlite3_column_blob(statement.statement, columnIdx) length:dataSize freeWhenDone:NO];
+    
+    return data;
+}
+
+
+
 
 
 - (void)setParentDB:(FMDatabase *)newDb {
