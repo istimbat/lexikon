@@ -303,14 +303,14 @@
   
   if (! show) {
     cancelSearchTableCover.alpha = 0.0f;
-    suggestionsController.view.alpha = 0.0f;
+    suggestionsController.view.hidden = YES;
   }
   else {
     if (mySearchBar.text.length > 0) {
-      suggestionsController.view.alpha = 1.0f;
+      suggestionsController.view.hidden = NO;
     }
     else {
-      suggestionsController.view.alpha = 0.0f;
+      suggestionsController.view.hidden = YES;
       cancelSearchTableCover.alpha = 0.8f;
     }
   }
@@ -321,7 +321,7 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
   if (suggestionsController == nil) {
     suggestionsController = [[SearchSuggestionsController alloc] initWithNibName:@"SearchSuggestions" bundle:nil];
-    suggestionsController.view.alpha = 1.0f;
+    //suggestionsController.view.alpha = 1.0f;
     suggestionsController.main = self;
     suggestionsController.view.frame = CGRectMake(suggestionsController.view.frame.origin.x,
                                              suggestionsController.view.frame.origin.y+88,
