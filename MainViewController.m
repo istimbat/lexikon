@@ -71,11 +71,11 @@
     [self.indexLetters addObject: @"Å"];
     [self.indexLetters addObject: @"Ä"];
     [self.indexLetters addObject: @"Ö"];
-    languageSwitcherButton.title = @"Swe to Eng";
+    languageSwitcherButton.title = NSLocalizedString(@"Swe to Eng", @"Language toggle button Swedish to English");
   }
   else {
     [self.indexLetters removeObjectsInArray: [NSArray arrayWithObjects: @"Å", @"Ä", @"Ö", nil]];
-    languageSwitcherButton.title = @"Eng to Swe";
+    languageSwitcherButton.title = NSLocalizedString(@"Eng to Swe", @"Lanuage toggle button English to Swedish");
   }
 }
 
@@ -172,7 +172,7 @@
       [aSearchBar setTintColor: [UIColor colorWithRed:0.769 green:0.80 blue:0.824 alpha:1.0]];
       [aSearchBar sizeToFit];
       aSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
-      aSearchBar.placeholder = @"Search";
+      aSearchBar.placeholder = NSLocalizedString(@"Search", @"Search placeholder");
       aSearchBar.delegate = self;
       
       aSearchBar.frame = CGRectMake(0, 0, 290, 44);
@@ -187,7 +187,6 @@
     NSMutableArray *wordsForSection = [appDelegate.currentWords objectForKey:sectionLetter];
     
     cell.text = [[wordsForSection objectAtIndex:indexPath.row] word];
-    //    NSLog(@"SECTION: %d ROW: %d CELL: %@", indexPath.section, indexPath.row, cell.text);
   }
   
   return cell;
@@ -370,7 +369,7 @@
   }
   else {
     tableView.sectionIndexMinimumDisplayRowCount = 1;
-    buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAbout:)];
+    buttonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", @"About button") style:UIBarButtonItemStylePlain target:self action:@selector(showAbout:)];
   }
   [self.navigationItem setRightBarButtonItem: buttonItem animated:YES];
   [buttonItem release];
@@ -471,12 +470,12 @@
     }
     else {
       // display error message that the word was not found
-      [self searchFailed:[NSString stringWithFormat:@"%@ not found", searchWord]];
+      [self searchFailed:[NSString stringWithFormat:NSLocalizedString(@"Word not found", @"%@ not found"), searchWord]];
     }
   }
   else {
     // display error message alerting the user that we were not able to contact the Lexin website
-    [self searchFailed:@"Unable to reach the Lexin website"];
+    [self searchFailed:NSLocalizedString(@"Unable to reach the Lexin website", @"Error message when unable to contact Lexin")];
     //[NSString stringWithFormat:@"%@ %@", [myError localizedDescription], [myError localizedFailureReason]]];
   }  
   
@@ -487,10 +486,10 @@
 }
 
 - (void)searchFailed:(NSString *)message {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Search Error" 
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Search Error", @"Search Error alert title")
                                                   message:message
                                                  delegate:nil 
-                                        cancelButtonTitle:@"OK" 
+                                        cancelButtonTitle:NSLocalizedString(@"OK", @"Alert OK button")
                                         otherButtonTitles: nil];
 	[alert show];
 	[alert release];  

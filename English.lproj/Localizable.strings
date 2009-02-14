@@ -1,0 +1,23 @@
+﻿/* About button */
+"About" = "About";
+
+/* Lanuage toggle button English to Swedish */
+"Eng to Swe" = "Eng to Swe";
+/* Language toggle button Swedish to English */
+"Swe to Eng" = "Swe to Eng";
+
+/* Alert OK button */
+"OK" = "OK";
+
+/* Search placeholder */
+"Search" = "Search";
+
+/* Search Error alert title */
+"Search Error" = "Search Error";
+
+/* Error message when unable to contact Lexin */
+"Unable to reach the Lexin website" = "Unable to reach the Lexin website";
+
+/* %@ not found */
+"Word not found" = "%@ not found";
+

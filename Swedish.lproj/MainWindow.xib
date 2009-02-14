@@ -9,7 +9,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="2"/>
-			<integer value="17"/>
+			<integer value="20"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -85,11 +85,11 @@
 							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Lexikon</string>
 							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="1040070706">
-								<string key="IBUITitle">Swe to Eng</string>
+								<string key="IBUITitle">Swe till Eng</string>
 								<int key="IBUIStyle">1</int>
 							</object>
 							<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="775756665">
-								<string key="IBUITitle">About</string>
+								<string key="IBUITitle">Om</string>
 								<int key="IBUIStyle">1</int>
 							</object>
 						</object>
@@ -286,7 +286,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{882, 95}, {320, 480}}</string>
+					<string>{{516, 95}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>MainViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -411,7 +411,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Lexikon.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Lexikon.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

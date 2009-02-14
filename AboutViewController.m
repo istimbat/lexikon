@@ -41,7 +41,7 @@
   
   // by passing the bundle as the url we can reference the logo mark easily in the html
   [webView loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
-  self.title = @"About";
+  self.title = NSLocalizedString(@"About", @"About button");
   
 }
 
