@@ -470,7 +470,7 @@
     }
     else {
       // display error message that the word was not found
-      [self searchFailed:[NSString stringWithFormat:NSLocalizedString(@"Word not found", @"%@ not found"), searchWord]];
+      [self searchFailed:[NSString stringWithFormat:NSLocalizedString(@"%@ not found", @"word not found"), searchWord]];
     }
   }
   else {
